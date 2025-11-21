@@ -86,7 +86,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump",
-"speed": 9.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -149,7 +149,6 @@ root = SubResource("Resource_5c2io")
 metadata/_custom_type_script = "uid://cg0dkseeqhqbv"
 
 [node name="Label" type="Label" parent="."]
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

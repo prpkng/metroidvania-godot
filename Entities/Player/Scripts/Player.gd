@@ -9,12 +9,15 @@ const AIR_FRICTION := 800.0
 const GRAVITY := 750.0
 const FALL_GRAVITY := 800.0
 const WALL_GRAVITY := 25.0
-const MAX_FALL_SPEED = 400.0
+const MAX_FALL_SPEED = 240.0
 
 const JUMP_VELOCITY := -200
 const JUMP_CUT_FACTOR := 0.5
-const WALL_JUMP_VELOCITY := 100
-const WALL_JUMP_PUSHBACK := 80
+
+const WALL_JUMP_VELOCITY := -200
+const WALL_JUMP_PUSHBACK_FORCE := 140
+const WALL_JUMP_PUSHBACK_ACCELERATION := 1600
+const WALL_JUMP_PUSHBACK_DURATION = 0.2
 
 const JUMP_BUFFER_TIME := 0.1
 const COYOTE_TIME := 0.08
@@ -23,33 +26,30 @@ const COYOTE_TIME := 0.08
 @onready var sprite: AnimManager = $Sprite
 @onready var fsm_label := $Label
 
-var jump_buffer: Timer
-var coyote_timer: Timer
+@onready var jump_buffer: Timer = create_and_add_timer(JUMP_BUFFER_TIME)
+@onready var coyote_timer: Timer = create_and_add_timer(COYOTE_TIME)
+@onready var wall_jump_timer: Timer = create_and_add_timer(WALL_JUMP_PUSHBACK_DURATION)
 var coyote_timer_available := false
+
+var _look_direction: int = 1
+
+func create_and_add_timer(duration: float) -> Timer:
+	var timer := Timer.new()
+	timer.wait_time = duration
+	timer.one_shot = true
+	add_child(timer)
+	return timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	# Setup jump timers
-	
-	jump_buffer = Timer.new()
-	jump_buffer.wait_time = JUMP_BUFFER_TIME
-	jump_buffer.one_shot = true
-	add_child(jump_buffer)
-	
-	coyote_timer = Timer.new()
-	coyote_timer.wait_time = COYOTE_TIME
-	coyote_timer.one_shot = true
-	coyote_timer.timeout.connect(_on_coyote_timeout)
-	add_child(coyote_timer)
-	
 	# Setup FSM states
 	fsm.root = StateMachine.new({
 		&"ground": PlayerGroundStateMachine.new({
 			&"idle": PlayerIdleState.new(),
 			&"move": PlayerMoveState.new()
 		}),
-		&"air": PlayerAirState.new()
+		&"air": PlayerAirState.new(),
+		&"wall": PlayerWallState.new()
 	})
 
 	
@@ -60,6 +60,12 @@ func _ready() -> void:
 	
 	fsm.start()
 
+## Sets the [member _look_direction] to the given direction if [param dir] != 0
+func set_look_dir(dir: int) -> void:
+	if dir == 0: return
+	_look_direction = dir
+
+## Returns the player horizontal move input
 func get_move_input() -> int:
 	var input := Input.get_axis(&"move_left", &"move_right")
 	return sign(input) if abs(input) > 0.1 else 0
@@ -73,8 +79,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	fsm_label.text = fsm.root.get_leaf_state().get_full_hierarchy()
-	var move_input := get_move_input()
-	if move_input != 0: sprite.flip_h = move_input < 0
+	sprite.flip_h = _look_direction < 0
 	
 func _on_coyote_timeout() -> void:
 	coyote_timer_available = false
