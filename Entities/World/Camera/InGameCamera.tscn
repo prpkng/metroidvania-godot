@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhwurn7ucnsxb"]
+
+[ext_resource type="Script" uid="uid://sstvmpsoo31i" path="res://Entities/World/Camera/Scripts/CameraManager.gd" id="1_0fmx4"]
+
+[node name="InGameCamera" type="Camera2D"]
+limit_enabled = false
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+script = ExtResource("1_0fmx4")
+metadata/_custom_type_script = "uid://sstvmpsoo31i"

@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://nwroia66nde1"]
+[gd_scene load_steps=4 format=3 uid="uid://nwroia66nde1"]
 
-[ext_resource type="PackedScene" uid="uid://c6l44dj520381" path="res://Scenes/LDtk/levels/Level_0.scn" id="1_4ypwl"]
-[ext_resource type="PackedScene" uid="uid://cp2grj7n2eu35" path="res://Entities/Player/player.tscn" id="2_buury"]
+[ext_resource type="PackedScene" uid="uid://dhwurn7ucnsxb" path="res://Entities/World/Camera/InGameCamera.tscn" id="1_7k3bv"]
+[ext_resource type="PackedScene" uid="uid://uxn0vjx7x1af" path="res://Scenes/LDtk/metroidvania-maps.ldtk" id="2_7k3bv"]
+[ext_resource type="PackedScene" uid="uid://cp2grj7n2eu35" path="res://Entities/World/Player/player.tscn" id="2_buury"]
 
 [node name="Underground" type="Node2D"]
 
-[node name="Level_0" parent="." instance=ExtResource("1_4ypwl")]
+[node name="InGameCamera" parent="." instance=ExtResource("1_7k3bv")]
 
 [node name="Player" parent="." instance=ExtResource("2_buury")]
 position = Vector2(137, 172)
+
+[node name="metroidvania-maps" parent="." instance=ExtResource("2_7k3bv")]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dday0yj05an5m"
-path="res://.godot/imported/player.png-a92647d6f105e98eda86f57b919d1baf.ctex"
+uid="uid://chdqlav6o17dg"
+path="res://.godot/imported/camera_target.svg-d451ab5dba132136289cd2a3eafddf7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Player/Art/player.png"
-dest_files=["res://.godot/imported/player.png-a92647d6f105e98eda86f57b919d1baf.ctex"]
+source_file="res://Entities/World/Camera/Icons/camera_target.svg"
+dest_files=["res://.godot/imported/camera_target.svg-d451ab5dba132136289cd2a3eafddf7d.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

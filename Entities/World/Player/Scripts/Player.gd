@@ -26,19 +26,13 @@ const COYOTE_TIME := 0.08
 @onready var sprite: AnimManager = $Sprite
 @onready var fsm_label := $Label
 
-@onready var jump_buffer: Timer = create_and_add_timer(JUMP_BUFFER_TIME)
-@onready var coyote_timer: Timer = create_and_add_timer(COYOTE_TIME)
-@onready var wall_jump_timer: Timer = create_and_add_timer(WALL_JUMP_PUSHBACK_DURATION)
+@onready var jump_buffer: Timer = CommonUtils.create_and_add_timer(self, JUMP_BUFFER_TIME)
+@onready var coyote_timer: Timer = CommonUtils.create_and_add_timer(self, COYOTE_TIME)
+@onready var wall_jump_timer: Timer = CommonUtils.create_and_add_timer(self, WALL_JUMP_PUSHBACK_DURATION)
 var coyote_timer_available := false
 
 var _look_direction: int = 1
 
-func create_and_add_timer(duration: float) -> Timer:
-	var timer := Timer.new()
-	timer.wait_time = duration
-	timer.one_shot = true
-	add_child(timer)
-	return timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

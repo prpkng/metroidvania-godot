@@ -1,12 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://cp2grj7n2eu35"]
+[gd_scene load_steps=24 format=3 uid="uid://cp2grj7n2eu35"]
 
-[ext_resource type="Script" uid="uid://bb1ip0d3l8i54" path="res://Entities/Player/Scripts/Player.gd" id="1_3uyv8"]
-[ext_resource type="Texture2D" uid="uid://dday0yj05an5m" path="res://Entities/Player/Art/player.png" id="1_mv1ah"]
+[ext_resource type="Script" uid="uid://bb1ip0d3l8i54" path="res://Entities/World/Player/Scripts/Player.gd" id="1_3uyv8"]
+[ext_resource type="Texture2D" uid="uid://dday0yj05an5m" path="res://Entities/World/Player/Art/player.png" id="1_mv1ah"]
 [ext_resource type="Script" uid="uid://buw34jqnqgiqx" path="res://Common/AnimManager.gd" id="3_01a4e"]
 [ext_resource type="Script" uid="uid://cg0dkseeqhqbv" path="res://Common/StateMachines/FSM.gd" id="3_lu8i8"]
 [ext_resource type="Script" uid="uid://bgiwrf682kdjw" path="res://Common/StateMachines/StateMachine.gd" id="4_5c2io"]
 [ext_resource type="Script" uid="uid://cpuuweo0kirpt" path="res://Common/StateMachines/State.gd" id="5_4wf4l"]
 [ext_resource type="FontFile" uid="uid://b704sc0pdpr0x" path="res://UI/Fonts/bit-potion.fnt" id="6_4wf4l"]
+[ext_resource type="Script" uid="uid://3a831gsln1gl" path="res://Entities/World/Camera/Scripts/CameraTarget.gd" id="8_xshrf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iplt1"]
 atlas = ExtResource("1_mv1ah")
@@ -129,7 +130,13 @@ metadata/_custom_type_script = "uid://bgiwrf682kdjw"
 
 [node name="Player" type="CharacterBody2D"]
 physics_interpolation_mode = 1
+z_index = 20
 script = ExtResource("1_3uyv8")
+
+[node name="CameraTarget" type="Node2D" parent="."]
+position = Vector2(0, -4)
+script = ExtResource("8_xshrf")
+metadata/_custom_type_script = "uid://3a831gsln1gl"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)
