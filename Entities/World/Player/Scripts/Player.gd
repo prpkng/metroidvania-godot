@@ -23,13 +23,18 @@ const JUMP_BUFFER_TIME := 0.1
 const COYOTE_TIME := 0.08
 
 @onready var fsm: FSM = $FSM
-@onready var sprite: AnimManager = $Sprite
+@onready var sprite: Sprite2D = $Sprite
+@onready var animations: AnimManager = $AnimManager
 @onready var fsm_label := $Label
 
 @onready var jump_buffer: Timer = CommonUtils.create_and_add_timer(self, JUMP_BUFFER_TIME)
 @onready var coyote_timer: Timer = CommonUtils.create_and_add_timer(self, COYOTE_TIME)
 @onready var wall_jump_timer: Timer = CommonUtils.create_and_add_timer(self, WALL_JUMP_PUSHBACK_DURATION)
-var coyote_timer_available := false
+
+
+@export_group("Capabilities", "can_")
+var can_enabled := false
+@export var can_wall_jump := false
 
 var _look_direction: int = 1
 
@@ -73,7 +78,5 @@ func _input(event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	fsm_label.text = fsm.root.get_leaf_state().get_full_hierarchy()
-	sprite.flip_h = _look_direction < 0
+	sprite.scale.x = _look_direction
 	
-func _on_coyote_timeout() -> void:
-	coyote_timer_available = false

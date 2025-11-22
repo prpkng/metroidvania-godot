@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 	
 func _physics_process(_delta: float) -> void:
 	var move_input := player.get_move_input()
-	player.sprite.play_anim(&"idle")
+	player.animations.play_anim(&"idle")
 	
 	player.velocity.x = 0
 	player.velocity.y = player.WALL_GRAVITY

@@ -1,5 +1,5 @@
 class_name AnimManager
-extends AnimatedSprite2D
+extends AnimationPlayer
 
 @onready var lock_timer := Timer.new()
 
@@ -8,24 +8,20 @@ func _ready() -> void:
 	add_child(lock_timer)
 
 
-func play_anim(anim_name: StringName, force := false, restart := false) -> void:
-	if anim_name == animation and !restart:
+func play_anim(anim_name: StringName, force := false, restart := false, no_blend := false) -> void:
+	if anim_name == current_animation and !restart:
 		return
 	
 	if !lock_timer.is_stopped() and !force: return
-	
-	play(anim_name)
+	play(anim_name, 0 if no_blend else -1)
+
 
 func get_anim_duration(anim_name: StringName) -> float:
-	var count := 0.0
-	for i in range(sprite_frames.get_frame_count(anim_name)):
-		count += sprite_frames.get_frame_duration(anim_name, i)
-	
-	return count / (sprite_frames.get_animation_speed(anim_name) * abs(get_playing_speed()))
-	
+	return get_animation(anim_name).length
+
 
 func play_anim_locking(anim_name: StringName, lock_time := -1.0, force := false, restart := false) -> void:
-	if anim_name == animation and !restart:
+	if anim_name == current_animation and !restart:
 		return
 	
 	if !lock_timer.is_stopped() and !force: return

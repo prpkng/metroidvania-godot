@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 	if move_input == 0:
 		machine.switch(&"idle")
 	
-	player.sprite.play_anim(&"move")
+	player.animations.play_anim(&"move")
 	player.set_look_dir(move_input)
 	
 	
