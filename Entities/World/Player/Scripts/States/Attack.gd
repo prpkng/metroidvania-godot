@@ -1,6 +1,8 @@
 class_name PlayerAttackState
 extends PlayerState
 
+const HIT_PARTICLES = preload("uid://b64pxoe0snrhd")
+
 func _enter(_args := []) -> void:
 	player.attack_cooldown_timer.start()
 	
@@ -42,8 +44,8 @@ func _on_action(action: StringName, ..._args: Array) -> void:
 		&"hit-solid":
 			var space := player.get_world_2d().direct_space_state
 			var query := PhysicsRayQueryParameters2D.create(
-				player.global_position,
-				Vector2(player._look_direction * player.weapon.main_shape.shape.get_rect().size.x, 0),
+				player.global_position + Vector2.UP*4,
+				player.global_position + Vector2(player._look_direction * player.weapon.main_shape.shape.get_rect().size.x, 0),
 				player.weapon.hitbox.collision_mask
 			)
 			var result := space.intersect_ray(query)
@@ -55,7 +57,13 @@ func _on_action(action: StringName, ..._args: Array) -> void:
 			player.velocity.y = player.ATTACK_WALL_BUMP.y
 			machine.switch("air")
 			
-			
+			var particles: GPUParticles2D = HIT_PARTICLES.instantiate()
+			player.owner.add_child(particles)
+			particles.global_position = result["position"] - normal*4
+			particles.transform.x = normal
+			particles.emitting = true
+			particles.finished.connect(particles.queue_free)
+			#particles.emitting = true
 	
 func _exit() -> void:
 	player.weapon.visible = true

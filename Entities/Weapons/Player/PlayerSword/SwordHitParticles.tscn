@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://b64pxoe0snrhd"]
+
+[sub_resource type="Curve" id="Curve_bf5b8"]
+_data = [Vector2(0.010012209, 1), 0.0, 0.11613276, 0, 0, Vector2(1, 0), -0.15391116, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pksdd"]
+curve = SubResource("Curve_bf5b8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5gd3k"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 2, 0)
+spread = 50.0
+flatness = 0.591
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 70, 0)
+damping_min = 5.0
+damping_max = 20.0
+scale_min = 2.0
+scale_max = 3.5
+scale_curve = SubResource("CurveTexture_pksdd")
+turbulence_enabled = true
+turbulence_noise_strength = 0.03
+turbulence_noise_scale = 5.884
+turbulence_influence_min = 0.036000002
+turbulence_influence_max = 0.095000006
+
+[node name="SwordHitParticles" type="GPUParticles2D"]
+emitting = false
+lifetime = 0.8
+one_shot = true
+preprocess = 0.1
+speed_scale = 1.25
+explosiveness = 1.0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_5gd3k")
