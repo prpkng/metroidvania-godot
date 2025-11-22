@@ -7,9 +7,17 @@ func _ready() -> void:
 	lock_timer.one_shot = true
 	add_child(lock_timer)
 
+func reset_lock_timer() -> void:
+	lock_timer.stop()
+
+func play_anim_async(anim_name: StringName, force := false, restart := false, no_blend := false) -> void:
+	play_anim(anim_name, force, restart, no_blend)
+	
+	await get_tree().create_timer(get_anim_duration(anim_name)).timeout
+	
 
 func play_anim(anim_name: StringName, force := false, restart := false, no_blend := false) -> void:
-	if anim_name == current_animation and !restart:
+	if anim_name == assigned_animation and !restart:
 		return
 	
 	if !lock_timer.is_stopped() and !force: return
@@ -21,7 +29,7 @@ func get_anim_duration(anim_name: StringName) -> float:
 
 
 func play_anim_locking(anim_name: StringName, lock_time := -1.0, force := false, restart := false) -> void:
-	if anim_name == current_animation and !restart:
+	if anim_name == assigned_animation and !restart:
 		return
 	
 	if !lock_timer.is_stopped() and !force: return

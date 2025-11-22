@@ -9,6 +9,7 @@
 [node name="InGameCamera" parent="." instance=ExtResource("1_7k3bv")]
 
 [node name="Player" parent="." instance=ExtResource("2_buury")]
-position = Vector2(137, 172)
+position = Vector2(133, 183)
 
 [node name="metroidvania-maps" parent="." instance=ExtResource("2_7k3bv")]
+z_index = 1

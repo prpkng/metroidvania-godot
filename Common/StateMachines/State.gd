@@ -8,7 +8,7 @@ extends Resource
 ## The parent state machine
 var machine: StateMachine
 ## The name of this state in the owning machine
-var name: String
+var name: StringName
 
 ## Called when the owning machine switches to this state
 @abstract 

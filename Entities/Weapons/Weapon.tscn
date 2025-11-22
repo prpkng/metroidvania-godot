@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://v6ke7nd0d34k"]
+
+[ext_resource type="Script" uid="uid://bgjch4ky0cdg5" path="res://Entities/Weapons/Weapon.gd" id="1_7nybm"]
+[ext_resource type="Script" uid="uid://b1vnxk5bfh6el" path="res://addons/health_hitbox_hurtbox/2d/hit_box_2d/hit_box_2d.gd" id="1_cci8m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2yesw"]
+size = Vector2(18, 17.5)
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_7nybm")
+metadata/_custom_type_script = "uid://bgjch4ky0cdg5"
+
+[node name="HitBox2D" type="Area2D" parent="."]
+collision_layer = 514
+collision_mask = 514
+script = ExtResource("1_cci8m")
+ignore_collisions = true
+metadata/_custom_type_script = "uid://b1vnxk5bfh6el"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
+position = Vector2(9, -0.25)
+shape = SubResource("RectangleShape2D_2yesw")
+
+[connection signal="hit_box_entered" from="HitBox2D" to="." method="_on_hitbox_entered"]
+[connection signal="hurt_box_entered" from="HitBox2D" to="." method="_on_hurtbox_entered"]
+[connection signal="unknown_area_entered" from="HitBox2D" to="." method="_on_unknown_area_entered"]

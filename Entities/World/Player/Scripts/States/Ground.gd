@@ -22,5 +22,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_action(action: StringName, ...args: Array) -> void:
 	super._on_action(action, args)
-	if action == &"jump":
-		machine.switch("air", ["jump"])
+	match action:
+		&"jump":
+			machine.switch("air", ["jump"])
+		&"attack-pressed":
+			machine.switch("attack")
+			

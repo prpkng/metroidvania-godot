@@ -12,13 +12,15 @@ func _enter(args := []) -> void:
 	was_on_wall = false
 	last_wall_dir = 0
 	
-	if "jump" in args:
+	if "already_jumping" in args:
+		is_jumping = true
+	elif "jump" in args:
 		perform_jump()
 	elif "wall_jump" in args:
 		perform_wall_jump(args[1])
 	else:
 		player.coyote_timer.start()
-		player.animations.play_anim(&"air")
+		player.animations.play_anim(&"fall")
 		
 	# Placing this out of the elif block because it can be used simultaneously with
 	# the others. Like: coyote time + wall
@@ -77,15 +79,18 @@ func _physics_process(delta: float) -> void:
 	
 
 func _on_action(action: StringName, ..._args: Array) -> void:
-	if action == &"stop-jump" and is_jumping:
-		player.velocity.y *= player.JUMP_CUT_FACTOR
-		is_jumping = false
-	elif action == &"jump":
-		if !player.coyote_timer.is_stopped():
-			if was_on_wall: perform_wall_jump(last_wall_dir)
-			else: perform_jump()
-		else:
-			player.jump_buffer.start()
+	match action:
+		&"stop-jump" when is_jumping:
+			player.velocity.y *= player.JUMP_CUT_FACTOR
+			is_jumping = false
+		&"jump":
+			if !player.coyote_timer.is_stopped():
+				if was_on_wall: perform_wall_jump(last_wall_dir)
+				else: perform_jump()
+			else:
+				player.jump_buffer.start()
+		&"attack-pressed":
+			machine.switch("attack")
 
 func _exit() -> void:
 	pass

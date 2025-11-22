@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxwbwqbketm2g"]
+
+[ext_resource type="PackedScene" uid="uid://v6ke7nd0d34k" path="res://Entities/Weapons/Weapon.tscn" id="1_q8m2v"]
+[ext_resource type="Texture2D" uid="uid://y6bcn68qsb7u" path="res://Entities/Weapons/Player/PlayerSword/sword.png" id="2_uipso"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8m2v"]
+size = Vector2(14.25, 9)
+
+[node name="Weapon" instance=ExtResource("1_q8m2v")]
+
+[node name="Sprite" type="Sprite2D" parent="." index="0"]
+z_index = -5
+position = Vector2(0, -4)
+rotation = -1.694404
+texture = ExtResource("2_uipso")
+offset = Vector2(0.5, -8)
+flip_h = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="HitBox2D" index="0"]
+position = Vector2(9, -5)
+shape = SubResource("RectangleShape2D_q8m2v")
+
+[connection signal="body_entered" from="HitBox2D" to="." method="_on_body_entered"]

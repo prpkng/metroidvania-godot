@@ -5,4 +5,6 @@ func _plugging() -> void:
 	plug("russmatney/log.gd", { "include": ["addons/log"], "exclude": ["addons/gd-plug", "addons/reload_current_scene", "addons/gdUnit4"] }) 
 	
 	plug("heygleeson/godot-ldtk-importer")
+	
+	plug("cluttered-code/godot-health-hitbox-hurtbox", { "exclude": ["addons/gdUnit4"] })
 	pass
