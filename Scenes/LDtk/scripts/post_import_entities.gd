@@ -20,7 +20,7 @@ func post_import(entity_layer: LDTKEntityLayer) -> LDTKEntityLayer:
 		# Perform operations here
 		if "foliage" in entity.definition.tags:
 			var scene := FOLIAGE_ENTITIES[entity.identifier]
-			var node := scene.instantiate()
+			var node := scene.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 			node.position = entity.position
 			entity_layer.add_child(node)
 			foliage_count += 1

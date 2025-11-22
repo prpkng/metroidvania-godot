@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://catgxueyt0c2s"]
+[gd_scene load_steps=5 format=3 uid="uid://catgxueyt0c2s"]
 
 [ext_resource type="PackedScene" uid="uid://t4xkfhhwypdp" path="res://Entities/World/Decorations/Foliage/BaseFoliage.tscn" id="1_d0rl5"]
-[ext_resource type="Texture2D" uid="uid://cty1p884nbyy7" path="res://Scenes/LDtk/tilesets/bw_tileset.png" id="2_03kee"]
+[ext_resource type="Shader" uid="uid://crwahnfm8asv0" path="res://Entities/World/Decorations/Foliage/BaseFoliage.gdshader" id="2_03kee"]
+[ext_resource type="Texture2D" uid="uid://cpruxsv2hrh18" path="res://Entities/World/Decorations/Foliage/Sprites/grass1.png" id="2_d0rl5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_orjd6"]
+shader = ExtResource("2_03kee")
+shader_parameter/y_multiplier = 4.10000006109492
+shader_parameter/y_pow = 2.0
+shader_parameter/force = 0.25
+shader_parameter/frequency = 4.0
+shader_parameter/position_offset_multiplier = Vector2(0.2, 0.2)
+shader_parameter/bias_force = 0.6
+shader_parameter/bias_y_multiplier = 1.60000002384192
+shader_parameter/bias_y_pow = 1.35
 
 [node name="Grass" instance=ExtResource("1_d0rl5")]
-texture = ExtResource("2_03kee")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(40, 32, 8, 8)
+material = SubResource("ShaderMaterial_orjd6")
+instance_shader_parameters/bias = 0.0
+texture = ExtResource("2_d0rl5")

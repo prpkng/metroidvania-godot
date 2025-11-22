@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cp2grj7n2eu35"]
+[gd_scene load_steps=16 format=3 uid="uid://cp2grj7n2eu35"]
 
 [ext_resource type="Script" uid="uid://bb1ip0d3l8i54" path="res://Entities/World/Player/Scripts/Player.gd" id="1_3uyv8"]
 [ext_resource type="Texture2D" uid="uid://dday0yj05an5m" path="res://Entities/World/Player/Art/player.png" id="1_mv1ah"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://cpuuweo0kirpt" path="res://Common/StateMachines/State.gd" id="5_4wf4l"]
 [ext_resource type="FontFile" uid="uid://b704sc0pdpr0x" path="res://UI/Fonts/bit-potion.fnt" id="6_4wf4l"]
 [ext_resource type="Script" uid="uid://3a831gsln1gl" path="res://Entities/World/Camera/Scripts/CameraTarget.gd" id="8_xshrf"]
+[ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="11_vk8fo"]
+[ext_resource type="Script" uid="uid://ctuf38y050aep" path="res://addons/health_hitbox_hurtbox/2d/hurt_box_2d/hurt_box_2d.gd" id="12_6w7wg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3uyv8"]
 size = Vector2(9, 6)
@@ -17,6 +19,9 @@ size = Vector2(9, 6)
 [sub_resource type="Resource" id="Resource_5c2io"]
 script = ExtResource("4_5c2io")
 metadata/_custom_type_script = "uid://bgiwrf682kdjw"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6w7wg"]
+size = Vector2(8, 6)
 
 [node name="Player" type="CharacterBody2D"]
 physics_interpolation_mode = 1
@@ -79,5 +84,20 @@ theme_override_fonts/font = ExtResource("6_4wf4l")
 text = "[state]"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="HurtBox2D" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 256
+collision_mask = 512
+script = ExtResource("12_6w7wg")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://ctuf38y050aep"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox2D"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_6w7wg")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("11_vk8fo")
+metadata/_custom_type_script = "uid://dr8bvnfebp76"
 
 [editable path="Sprite/Weapon"]

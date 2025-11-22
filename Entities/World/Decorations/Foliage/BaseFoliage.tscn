@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://t4xkfhhwypdp"]
+[gd_scene load_steps=4 format=3 uid="uid://t4xkfhhwypdp"]
+
+[ext_resource type="Material" uid="uid://cj5ictejbebug" path="res://Entities/World/Decorations/Foliage/FoliageShader.tres" id="1_0ppaa"]
+[ext_resource type="Script" uid="uid://ohvm0xogqs3d" path="res://Entities/World/Decorations/Foliage/Foliage.gd" id="2_nld5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nld5b"]
+size = Vector2(8, 8)
 
 [node name="BaseFoliage" type="Sprite2D"]
+texture_repeat = 1
+material = ExtResource("1_0ppaa")
+centered = false
+offset = Vector2(-10, -24)
+region_enabled = true
+region_rect = Rect2(-8, -16, 24, 24)
+script = ExtResource("2_nld5b")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(4, -4)
+shape = SubResource("RectangleShape2D_nld5b")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

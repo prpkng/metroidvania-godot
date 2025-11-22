@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://psq64oj8iiy2"]
+[gd_scene load_steps=5 format=3 uid="uid://psq64oj8iiy2"]
 
 [ext_resource type="PackedScene" uid="uid://t4xkfhhwypdp" path="res://Entities/World/Decorations/Foliage/BaseFoliage.tscn" id="1_vfxsq"]
-[ext_resource type="Texture2D" uid="uid://cty1p884nbyy7" path="res://Scenes/LDtk/tilesets/bw_tileset.png" id="2_kivhh"]
+[ext_resource type="Shader" uid="uid://crwahnfm8asv0" path="res://Entities/World/Decorations/Foliage/BaseFoliage.gdshader" id="2_kivhh"]
+[ext_resource type="Texture2D" uid="uid://dri1l30wal6ka" path="res://Entities/World/Decorations/Foliage/Sprites/mushroom.png" id="2_vfxsq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mp2ay"]
+shader = ExtResource("2_kivhh")
+shader_parameter/y_multiplier = 2.0000000298024
+shader_parameter/y_pow = 1.3
+shader_parameter/force = 0.05
+shader_parameter/frequency = 4.0
+shader_parameter/position_offset_multiplier = Vector2(0.2, 0.2)
+shader_parameter/bias_force = 0.5
+shader_parameter/bias_y_multiplier = 0.80000001192096
+shader_parameter/bias_y_pow = 1.35
 
 [node name="Mushroom" instance=ExtResource("1_vfxsq")]
-texture = ExtResource("2_kivhh")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(48, 24, 8, 8)
+material = SubResource("ShaderMaterial_mp2ay")
+instance_shader_parameters/bias = 0.0
+texture = ExtResource("2_vfxsq")

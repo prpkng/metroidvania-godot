@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cj5ictejbebug"]
+
+[ext_resource type="Shader" uid="uid://crwahnfm8asv0" path="res://Entities/World/Decorations/Foliage/BaseFoliage.gdshader" id="1_02dqt"]
+
+[resource]
+shader = ExtResource("1_02dqt")
+shader_parameter/y_multiplier = 3.30000004917396
+shader_parameter/y_pow = 2.0
+shader_parameter/force = 0.05
+shader_parameter/frequency = 4.0
+shader_parameter/position_offset_multiplier = Vector2(0.2, 0.2)
+shader_parameter/bias_force = 0.5
+shader_parameter/bias_y_multiplier = 1.60000002384192
+shader_parameter/bias_y_pow = 1.35

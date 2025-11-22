@@ -254,82 +254,38 @@ entities = [{
 "smart_color": Color(0.24313726, 0.5372549, 0.28235295, 1)
 }]
 
-[node name="Grass" type="Sprite2D" parent="Entities" instance=ExtResource("5_h8aod")]
+[node name="Grass" parent="Entities" instance=ExtResource("5_h8aod")]
 position = Vector2(104, 160)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(40, 32, 8, 8)
 
-[node name="TallMushroom" type="Sprite2D" parent="Entities" instance=ExtResource("6_47sfl")]
+[node name="TallMushroom" parent="Entities" instance=ExtResource("6_47sfl")]
 position = Vector2(160, 144)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(40, 24, 8, 8)
 
-[node name="@Sprite2D@116745" type="Sprite2D" parent="Entities" instance=ExtResource("6_47sfl")]
+[node name="@Sprite2D@54170" parent="Entities" instance=ExtResource("6_47sfl")]
 position = Vector2(176, 128)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(40, 24, 8, 8)
 
-[node name="Mushroom" type="Sprite2D" parent="Entities" instance=ExtResource("7_rwog1")]
+[node name="Mushroom" parent="Entities" instance=ExtResource("7_rwog1")]
 position = Vector2(168, 144)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(48, 24, 8, 8)
 
-[node name="@Sprite2D@116746" type="Sprite2D" parent="Entities" instance=ExtResource("6_47sfl")]
+[node name="@Sprite2D@54171" parent="Entities" instance=ExtResource("6_47sfl")]
 position = Vector2(80, 96)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(40, 24, 8, 8)
 
-[node name="@Sprite2D@116747" type="Sprite2D" parent="Entities" instance=ExtResource("6_47sfl")]
+[node name="@Sprite2D@54172" parent="Entities" instance=ExtResource("6_47sfl")]
 position = Vector2(48, 88)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(40, 24, 8, 8)
 
-[node name="@Sprite2D@116748" type="Sprite2D" parent="Entities" instance=ExtResource("7_rwog1")]
+[node name="@Sprite2D@54173" parent="Entities" instance=ExtResource("7_rwog1")]
 position = Vector2(64, 96)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(48, 24, 8, 8)
 
-[node name="@Sprite2D@116749" type="Sprite2D" parent="Entities" instance=ExtResource("7_rwog1")]
+[node name="@Sprite2D@54174" parent="Entities" instance=ExtResource("7_rwog1")]
 position = Vector2(16, 80)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(48, 24, 8, 8)
 
-[node name="@Sprite2D@116750" type="Sprite2D" parent="Entities" instance=ExtResource("6_47sfl")]
+[node name="@Sprite2D@54175" parent="Entities" instance=ExtResource("6_47sfl")]
 position = Vector2(8, 80)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(40, 24, 8, 8)
 
-[node name="TallGrass" type="Sprite2D" parent="Entities" instance=ExtResource("8_7u5er")]
+[node name="TallGrass" parent="Entities" instance=ExtResource("8_7u5er")]
 position = Vector2(128, 152)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -8)
-region_enabled = true
-region_rect = Rect2(32, 24, 8, 16)
 
-[node name="Grass2" type="Sprite2D" parent="Entities" instance=ExtResource("9_xa4i2")]
+[node name="Grass2" parent="Entities" instance=ExtResource("9_xa4i2")]
 position = Vector2(224, 80)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(56, 24, 8, 8)
 
 [node name="Decorations" type="Node2D" parent="."]
 script = ExtResource("3_hkbym")
@@ -414,30 +370,14 @@ entities = [{
 "smart_color": Color(0.24313726, 0.5372549, 0.28235295, 1)
 }]
 
-[node name="Grass" type="Sprite2D" parent="Decorations" instance=ExtResource("5_h8aod")]
+[node name="Grass" parent="Decorations" instance=ExtResource("5_h8aod")]
 position = Vector2(64, 208)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(40, 32, 8, 8)
 
-[node name="@Sprite2D@116751" type="Sprite2D" parent="Decorations" instance=ExtResource("5_h8aod")]
+[node name="@Sprite2D@54176" parent="Decorations" instance=ExtResource("5_h8aod")]
 position = Vector2(56, 208)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(40, 32, 8, 8)
 
-[node name="@Sprite2D@116752" type="Sprite2D" parent="Decorations" instance=ExtResource("5_h8aod")]
+[node name="@Sprite2D@54177" parent="Decorations" instance=ExtResource("5_h8aod")]
 position = Vector2(104, 232)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(40, 32, 8, 8)
 
-[node name="TallMushroom" type="Sprite2D" parent="Decorations" instance=ExtResource("6_47sfl")]
+[node name="TallMushroom" parent="Decorations" instance=ExtResource("6_47sfl")]
 position = Vector2(112, 152)
-texture = ExtResource("4_q7vwy")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(40, 24, 8, 8)

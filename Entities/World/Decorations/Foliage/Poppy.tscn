@@ -1,10 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bk4lo4mp8hg7g"]
 
 [ext_resource type="PackedScene" uid="uid://t4xkfhhwypdp" path="res://Entities/World/Decorations/Foliage/BaseFoliage.tscn" id="1_nwck5"]
-[ext_resource type="Texture2D" uid="uid://cty1p884nbyy7" path="res://Scenes/LDtk/tilesets/bw_tileset.png" id="2_nmpa6"]
+[ext_resource type="Texture2D" uid="uid://bnhwpgy02825u" path="res://Entities/World/Decorations/Foliage/Sprites/poppy.png" id="2_nwck5"]
 
 [node name="Poppy" instance=ExtResource("1_nwck5")]
-texture = ExtResource("2_nmpa6")
-offset = Vector2(4, -4)
-region_enabled = true
-region_rect = Rect2(0, 56, 8, 8)
+texture = ExtResource("2_nwck5")
