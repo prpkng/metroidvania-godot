@@ -37,7 +37,6 @@ func _physics_process(delta: float) -> void:
 func _on_action(action: StringName, ..._args: Array) -> void:
 	match action:
 		&"hit-solid":
-			Log.info("Hit a wall!")
 			var space := player.get_world_2d().direct_space_state
 			var query := PhysicsRayQueryParameters2D.create(
 				player.global_position,

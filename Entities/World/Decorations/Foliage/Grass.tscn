@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://catgxueyt0c2s"]
+
+[ext_resource type="PackedScene" uid="uid://t4xkfhhwypdp" path="res://Entities/World/Decorations/Foliage/BaseFoliage.tscn" id="1_d0rl5"]
+[ext_resource type="Texture2D" uid="uid://cty1p884nbyy7" path="res://Scenes/LDtk/tilesets/bw_tileset.png" id="2_03kee"]
+
+[node name="Grass" instance=ExtResource("1_d0rl5")]
+texture = ExtResource("2_03kee")
+offset = Vector2(4, -4)
+region_enabled = true
+region_rect = Rect2(40, 32, 8, 8)

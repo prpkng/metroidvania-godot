@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://psq64oj8iiy2"]
+
+[ext_resource type="PackedScene" uid="uid://t4xkfhhwypdp" path="res://Entities/World/Decorations/Foliage/BaseFoliage.tscn" id="1_vfxsq"]
+[ext_resource type="Texture2D" uid="uid://cty1p884nbyy7" path="res://Scenes/LDtk/tilesets/bw_tileset.png" id="2_kivhh"]
+
+[node name="Mushroom" instance=ExtResource("1_vfxsq")]
+texture = ExtResource("2_kivhh")
+offset = Vector2(4, -4)
+region_enabled = true
+region_rect = Rect2(48, 24, 8, 8)
