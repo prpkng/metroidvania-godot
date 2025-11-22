@@ -269,7 +269,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_t226p"]
 resource_name = "sword_slash"
-length = 0.40000334
+length = 0.43333668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -277,7 +277,7 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.025, 0.083333336, 0.15, 0.21666667, 0.28333336, 0.35000002, 0.40000334),
+"times": PackedFloat32Array(0, 0.025, 0.083333336, 0.175, 0.25, 0.31666666, 0.38333333, 0.43333668),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [10, 11, 12, 13, 14, 15, 16, 0]
@@ -302,7 +302,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-1.694404, -0.25, 0, 0.25, 0, -1.4008958, -0.048611805, -0.048918027, 0, 0),
-"times": PackedFloat32Array(0, 0.38333333)
+"times": PackedFloat32Array(0, 0.41666663)
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -311,7 +311,7 @@ tracks/3/path = NodePath("Sprite/Weapon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.108333334, 0.23333333),
+"times": PackedFloat32Array(0.108333334, 0.16666667),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],

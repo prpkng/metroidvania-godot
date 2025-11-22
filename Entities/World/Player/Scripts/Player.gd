@@ -8,7 +8,7 @@ const AIR_FRICTION := 800.0
 
 const ATTACK_COOLDOWN = 0.45
 const ATTACK_FRICTION := 1200.0
-const ATTACK_YBOOST := -30
+const ATTACK_YBOOST := -80
 const ATTACK_XBOOST := 80
 
 const ATTACK_WALL_BUMP := Vector2(120.0, -40.0)

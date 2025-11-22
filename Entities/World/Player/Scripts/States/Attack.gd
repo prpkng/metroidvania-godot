@@ -4,8 +4,11 @@ extends PlayerState
 func _enter(_args := []) -> void:
 	player.attack_cooldown_timer.start()
 	
-	if player.velocity.y > 10:
-		player.velocity.y = player.ATTACK_YBOOST
+	var boost := player.ATTACK_YBOOST
+	if player.velocity.y < 15:
+		boost *= 1
+	
+	player.velocity.y = boost
 	player.velocity.x = player._look_direction * player.ATTACK_XBOOST
 	
 	player.weapon.visible = false
@@ -31,7 +34,7 @@ func _physics_process(delta: float) -> void:
 		player.ATTACK_FRICTION * delta
 	)
 	
-	player.velocity.y += player.FALL_GRAVITY * delta
+	player.velocity.y += player.GRAVITY * delta
 	player.velocity.y = min(player.velocity.y, player.MAX_FALL_SPEED)
 
 func _on_action(action: StringName, ..._args: Array) -> void:
