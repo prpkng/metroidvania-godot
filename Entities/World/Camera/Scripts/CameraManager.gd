@@ -19,13 +19,11 @@ static func remove_target(target: CameraTarget) -> void:
 # ============
 
 var current_target: CameraTarget
-var current_quadrant: Vector2i
-
-var _going_up_timer: Timer
-
 
 func _ready() -> void:
 	set_current_target(0)
+	
+	GameManager.rooms.on_room_changed.connect(_on_room_changed)
 
 
 func set_current_target(index: int) -> void:
@@ -35,37 +33,20 @@ func set_current_target(index: int) -> void:
 	
 	Log.info("Set camera current target to: ", _available_targets[index])
 		
-	if current_target:
-		current_target.on_switch_quadrants.disconnect(_on_target_switch_quadrants)
 	current_target = _available_targets[index]
-	current_target.on_switch_quadrants.connect(_on_target_switch_quadrants)
-	
-	set_pos_to_quadrant(current_target.get_current_quadrant())
-	
 
-
-func set_pos_to_quadrant(quadrant: Vector2i) -> void:
-	if _going_up_timer and !_going_up_timer.is_stopped():
-		_going_up_timer.timeout.emit()
-		_going_up_timer.stop()
+func _on_room_changed(room: LDTKLevel) -> void:
+	var limit_pos := room.world_position
+	var limit_size := room.size
+	limit_left = limit_pos.x as int
+	limit_right = limit_pos.x+limit_size.x as int
+	limit_top = limit_pos.y as int
+	limit_bottom = limit_pos.y+limit_size.y as int
 	
-	if quadrant.y < current_quadrant.y:
-		_going_up_timer = CommonUtils.create_and_add_timer(self, 0.25)
-		#var last_smoothing := position_smoothing_speed
-		#position_smoothing_speed = GOING_UP_SMOOTHING
-		position_smoothing_enabled = false
-		
-		_going_up_timer.timeout.connect(func() -> void: 
-			#position_smoothing_speed = last_smoothing
-			position_smoothing_enabled = true
-			_going_up_timer.queue_free()
-		)
-		_going_up_timer.start()
-		# Going up
-		
-	
-	position = quadrant as Vector2 * QUADRANT_SIZE + QUADRANT_SIZE/2
-	current_quadrant = quadrant
+	var last_room := GameManager.rooms.get_last_room()
+	if last_room and room.position.y < last_room.position.y:
+		reset_smoothing.call_deferred()
 
-func _on_target_switch_quadrants(new_quadrant: Vector2i) -> void:
-	set_pos_to_quadrant(new_quadrant)
+func _process(_delta: float) -> void:
+	if current_target == null: return
+	global_position = current_target.global_position

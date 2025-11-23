@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dnuh7fn5i3dir"]
+[gd_scene load_steps=17 format=4 uid="uid://dnuh7fn5i3dir"]
 
 [ext_resource type="Script" uid="uid://chmxkju7ee5j3" path="res://addons/ldtk-importer/src/components/ldtk-level.gd" id="1_h8aod"]
 [ext_resource type="TileSet" uid="uid://ddm5s3h524wsc" path="res://Scenes/LDtk/tilesets/tileset_8px.res" id="2_47sfl"]
@@ -9,26 +9,30 @@
 [ext_resource type="PackedScene" uid="uid://psq64oj8iiy2" path="res://Entities/World/Decorations/Foliage/Mushroom.tscn" id="7_8g01b"]
 [ext_resource type="PackedScene" uid="uid://b5bvv2et8ib51" path="res://Entities/World/Decorations/Foliage/TallGrass.tscn" id="8_jm0f8"]
 [ext_resource type="PackedScene" uid="uid://bl146s4pcdmhe" path="res://Entities/World/Decorations/Foliage/Grass2.tscn" id="9_lf3nb"]
+[ext_resource type="PackedScene" uid="uid://daqpm0p7h18oo" path="res://Entities/World/Triggers/RoomBounds/RoomBoundsTrigger.tscn" id="10_47sfl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jctjp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc82s"]
 atlas = ExtResource("4_7u5er")
 region = Rect2(40, 32, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ngjf3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c75h"]
 atlas = ExtResource("4_7u5er")
 region = Rect2(40, 24, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_055bu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_el5d2"]
 atlas = ExtResource("4_7u5er")
 region = Rect2(48, 24, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5rf2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m76n"]
 atlas = ExtResource("4_7u5er")
 region = Rect2(32, 24, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c25a6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_47sfl"]
 atlas = ExtResource("4_7u5er")
 region = Rect2(56, 24, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwog1"]
+size = Vector2(256, 240)
 
 [node name="Level_2" type="Node2D"]
 script = ExtResource("1_h8aod")
@@ -41,6 +45,12 @@ neighbours = [{
 }, {
 "dir": "s",
 "levelIid": "85a8c9c0-ac70-11f0-927c-57a7298dd74b"
+}, {
+"dir": "e",
+"levelIid": "10c353f0-ac70-11f0-8a85-57254c14bd9d"
+}, {
+"dir": "se",
+"levelIid": "1f330c40-ac70-11f0-8a85-959936545389"
 }]
 bg_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
 
@@ -73,7 +83,7 @@ entities = [{
 "identifier": "Grass",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_jctjp")
+"tile": SubResource("AtlasTexture_kc82s")
 },
 "fields": {},
 "identifier": "Grass",
@@ -90,7 +100,7 @@ entities = [{
 "identifier": "Tall_Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_ngjf3")
+"tile": SubResource("AtlasTexture_3c75h")
 },
 "fields": {},
 "identifier": "Tall_Mushroom",
@@ -107,7 +117,7 @@ entities = [{
 "identifier": "Tall_Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_ngjf3")
+"tile": SubResource("AtlasTexture_3c75h")
 },
 "fields": {},
 "identifier": "Tall_Mushroom",
@@ -124,7 +134,7 @@ entities = [{
 "identifier": "Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_055bu")
+"tile": SubResource("AtlasTexture_el5d2")
 },
 "fields": {},
 "identifier": "Mushroom",
@@ -141,7 +151,7 @@ entities = [{
 "identifier": "Tall_Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_ngjf3")
+"tile": SubResource("AtlasTexture_3c75h")
 },
 "fields": {},
 "identifier": "Tall_Mushroom",
@@ -158,7 +168,7 @@ entities = [{
 "identifier": "Tall_Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_ngjf3")
+"tile": SubResource("AtlasTexture_3c75h")
 },
 "fields": {},
 "identifier": "Tall_Mushroom",
@@ -175,7 +185,7 @@ entities = [{
 "identifier": "Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_055bu")
+"tile": SubResource("AtlasTexture_el5d2")
 },
 "fields": {},
 "identifier": "Mushroom",
@@ -192,7 +202,7 @@ entities = [{
 "identifier": "Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_055bu")
+"tile": SubResource("AtlasTexture_el5d2")
 },
 "fields": {},
 "identifier": "Mushroom",
@@ -209,7 +219,7 @@ entities = [{
 "identifier": "Tall_Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_ngjf3")
+"tile": SubResource("AtlasTexture_3c75h")
 },
 "fields": {},
 "identifier": "Tall_Mushroom",
@@ -226,7 +236,7 @@ entities = [{
 "identifier": "Tall_Grass",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_p5rf2")
+"tile": SubResource("AtlasTexture_3m76n")
 },
 "fields": {},
 "identifier": "Tall_Grass",
@@ -243,7 +253,7 @@ entities = [{
 "identifier": "Grass_2",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_c25a6")
+"tile": SubResource("AtlasTexture_47sfl")
 },
 "fields": {},
 "identifier": "Grass_2",
@@ -260,25 +270,25 @@ position = Vector2(104, 160)
 [node name="TallMushroom" parent="Entities" instance=ExtResource("6_epbhd")]
 position = Vector2(160, 144)
 
-[node name="@Sprite2D@21007" parent="Entities" instance=ExtResource("6_epbhd")]
+[node name="@Sprite2D@40659" parent="Entities" instance=ExtResource("6_epbhd")]
 position = Vector2(176, 128)
 
 [node name="Mushroom" parent="Entities" instance=ExtResource("7_8g01b")]
 position = Vector2(168, 144)
 
-[node name="@Sprite2D@21008" parent="Entities" instance=ExtResource("6_epbhd")]
+[node name="@Sprite2D@40660" parent="Entities" instance=ExtResource("6_epbhd")]
 position = Vector2(80, 96)
 
-[node name="@Sprite2D@21009" parent="Entities" instance=ExtResource("6_epbhd")]
+[node name="@Sprite2D@40661" parent="Entities" instance=ExtResource("6_epbhd")]
 position = Vector2(48, 88)
 
-[node name="@Sprite2D@21010" parent="Entities" instance=ExtResource("7_8g01b")]
+[node name="@Sprite2D@40662" parent="Entities" instance=ExtResource("7_8g01b")]
 position = Vector2(64, 96)
 
-[node name="@Sprite2D@21011" parent="Entities" instance=ExtResource("7_8g01b")]
+[node name="@Sprite2D@40663" parent="Entities" instance=ExtResource("7_8g01b")]
 position = Vector2(16, 80)
 
-[node name="@Sprite2D@21012" parent="Entities" instance=ExtResource("6_epbhd")]
+[node name="@Sprite2D@40664" parent="Entities" instance=ExtResource("6_epbhd")]
 position = Vector2(8, 80)
 
 [node name="TallGrass" parent="Entities" instance=ExtResource("8_jm0f8")]
@@ -308,7 +318,7 @@ entities = [{
 "identifier": "Grass",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_jctjp")
+"tile": SubResource("AtlasTexture_kc82s")
 },
 "fields": {},
 "identifier": "Grass",
@@ -325,7 +335,7 @@ entities = [{
 "identifier": "Grass",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_jctjp")
+"tile": SubResource("AtlasTexture_kc82s")
 },
 "fields": {},
 "identifier": "Grass",
@@ -342,7 +352,7 @@ entities = [{
 "identifier": "Grass",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_jctjp")
+"tile": SubResource("AtlasTexture_kc82s")
 },
 "fields": {},
 "identifier": "Grass",
@@ -359,7 +369,7 @@ entities = [{
 "identifier": "Tall_Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_ngjf3")
+"tile": SubResource("AtlasTexture_3c75h")
 },
 "fields": {},
 "identifier": "Tall_Mushroom",
@@ -373,11 +383,19 @@ entities = [{
 [node name="Grass" parent="Decorations" instance=ExtResource("5_xa4i2")]
 position = Vector2(64, 208)
 
-[node name="@Sprite2D@21013" parent="Decorations" instance=ExtResource("5_xa4i2")]
+[node name="@Sprite2D@40665" parent="Decorations" instance=ExtResource("5_xa4i2")]
 position = Vector2(56, 208)
 
-[node name="@Sprite2D@21014" parent="Decorations" instance=ExtResource("5_xa4i2")]
+[node name="@Sprite2D@40666" parent="Decorations" instance=ExtResource("5_xa4i2")]
 position = Vector2(104, 232)
 
 [node name="TallMushroom" parent="Decorations" instance=ExtResource("6_epbhd")]
 position = Vector2(112, 152)
+
+[node name="Room Bounds Trigger" parent="." instance=ExtResource("10_47sfl")]
+
+[node name="CollisionShape2D" parent="Room Bounds Trigger" index="0"]
+position = Vector2(128, 120)
+shape = SubResource("RectangleShape2D_rwog1")
+
+[editable path="Room Bounds Trigger"]

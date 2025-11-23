@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://daqpm0p7h18oo"]
+
+[ext_resource type="Script" uid="uid://bpldq2n7r2wn8" path="res://Entities/World/Triggers/RoomBounds/RoomBoundsTrigger.gd" id="1_4knqt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xruf6"]
+
+[node name="Room Bounds Trigger" type="Area2D"]
+collision_layer = 0
+collision_mask = 256
+script = ExtResource("1_4knqt")
+metadata/_custom_type_script = "uid://bpldq2n7r2wn8"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xruf6")
+debug_color = Color(0, 0.7921569, 0.46666667, 0.16470589)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

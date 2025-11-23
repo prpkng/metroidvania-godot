@@ -7,10 +7,10 @@ path="res://.godot/imported/metroidvania-maps.ldtk-d4a207a6698d4cc17354f98314be5
 
 [deps]
 
-files=["res://Scenes/LDtk/tilesets/tileset_8px.res", "res://Scenes/LDtk/levels/Level_0.tscn", "res://Scenes/LDtk/levels/Level_1.tscn", "res://Scenes/LDtk/levels/Level_2.tscn", "res://.godot/imported/metroidvania-maps.ldtk-d4a207a6698d4cc17354f98314be516f.tscn"]
+files=["res://Scenes/LDtk/tilesets/tileset_8px.res", "res://Scenes/LDtk/levels/Level_0.tscn", "res://Scenes/LDtk/levels/Level_1.tscn", "res://Scenes/LDtk/levels/Level_2.tscn", "res://Scenes/LDtk/levels/Level_3.tscn", "res://Scenes/LDtk/levels/Level_4.tscn", "res://Scenes/LDtk/levels/Level_5.tscn", "res://.godot/imported/metroidvania-maps.ldtk-d4a207a6698d4cc17354f98314be516f.tscn"]
 
 source_file="res://Scenes/LDtk/metroidvania-maps.ldtk"
-dest_files=["res://.godot/imported/metroidvania-maps.ldtk-d4a207a6698d4cc17354f98314be516f.tscn", "res://Scenes/LDtk/tilesets/tileset_8px.res", "res://Scenes/LDtk/levels/Level_0.tscn", "res://Scenes/LDtk/levels/Level_1.tscn", "res://Scenes/LDtk/levels/Level_2.tscn", "res://.godot/imported/metroidvania-maps.ldtk-d4a207a6698d4cc17354f98314be516f.tscn"]
+dest_files=["res://.godot/imported/metroidvania-maps.ldtk-d4a207a6698d4cc17354f98314be516f.tscn", "res://Scenes/LDtk/tilesets/tileset_8px.res", "res://Scenes/LDtk/levels/Level_0.tscn", "res://Scenes/LDtk/levels/Level_1.tscn", "res://Scenes/LDtk/levels/Level_2.tscn", "res://Scenes/LDtk/levels/Level_3.tscn", "res://Scenes/LDtk/levels/Level_4.tscn", "res://Scenes/LDtk/levels/Level_5.tscn", "res://.godot/imported/metroidvania-maps.ldtk-d4a207a6698d4cc17354f98314be516f.tscn"]
 
 [params]
 
@@ -32,7 +32,7 @@ use_entity_placeholders=false
 Post Import=""
 tileset_post_import=""
 entities_post_import="uid://ckgn0jskjes36"
-level_post_import=""
+level_post_import="uid://dxtyf54lwq3ub"
 world_post_import=""
 Debug=""
 force_tileset_reimport=false

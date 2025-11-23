@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cjlx4bgdsoj7d"]
+[gd_scene load_steps=15 format=4 uid="uid://cjlx4bgdsoj7d"]
 
 [ext_resource type="Script" uid="uid://chmxkju7ee5j3" path="res://addons/ldtk-importer/src/components/ldtk-level.gd" id="1_chftp"]
 [ext_resource type="TileSet" uid="uid://ddm5s3h524wsc" path="res://Scenes/LDtk/tilesets/tileset_8px.res" id="2_3m76n"]
@@ -8,22 +8,26 @@
 [ext_resource type="PackedScene" uid="uid://catgxueyt0c2s" path="res://Entities/World/Decorations/Foliage/Grass.tscn" id="6_e8qd7"]
 [ext_resource type="PackedScene" uid="uid://psq64oj8iiy2" path="res://Entities/World/Decorations/Foliage/Mushroom.tscn" id="7_cp67e"]
 [ext_resource type="PackedScene" uid="uid://bwt0lx8xpp3fw" path="res://Entities/World/Decorations/Foliage/TallMushroom.tscn" id="8_ukpq2"]
+[ext_resource type="PackedScene" uid="uid://daqpm0p7h18oo" path="res://Entities/World/Triggers/RoomBounds/RoomBoundsTrigger.tscn" id="9_3m76n"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5rf2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m76n"]
 atlas = ExtResource("4_el5d2")
 region = Rect2(32, 24, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jctjp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc82s"]
 atlas = ExtResource("4_el5d2")
 region = Rect2(40, 32, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_055bu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_el5d2"]
 atlas = ExtResource("4_el5d2")
 region = Rect2(48, 24, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ngjf3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c75h"]
 atlas = ExtResource("4_el5d2")
 region = Rect2(40, 24, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8qd7"]
+size = Vector2(256, 240)
 
 [node name="Level_0" type="Node2D"]
 script = ExtResource("1_chftp")
@@ -99,7 +103,7 @@ entities = [{
 "identifier": "Tall_Grass",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_p5rf2")
+"tile": SubResource("AtlasTexture_3m76n")
 },
 "fields": {},
 "identifier": "Tall_Grass",
@@ -116,7 +120,7 @@ entities = [{
 "identifier": "Grass",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_jctjp")
+"tile": SubResource("AtlasTexture_kc82s")
 },
 "fields": {},
 "identifier": "Grass",
@@ -133,7 +137,7 @@ entities = [{
 "identifier": "Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_055bu")
+"tile": SubResource("AtlasTexture_el5d2")
 },
 "fields": {},
 "identifier": "Mushroom",
@@ -150,7 +154,7 @@ entities = [{
 "identifier": "Tall_Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_ngjf3")
+"tile": SubResource("AtlasTexture_3c75h")
 },
 "fields": {},
 "identifier": "Tall_Mushroom",
@@ -167,7 +171,7 @@ entities = [{
 "identifier": "Tall_Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_ngjf3")
+"tile": SubResource("AtlasTexture_3c75h")
 },
 "fields": {},
 "identifier": "Tall_Mushroom",
@@ -184,7 +188,7 @@ entities = [{
 "identifier": "Tall_Mushroom",
 "renderMode": "Tile",
 "tags": ["foliage"],
-"tile": SubResource("AtlasTexture_ngjf3")
+"tile": SubResource("AtlasTexture_3c75h")
 },
 "fields": {},
 "identifier": "Tall_Mushroom",
@@ -207,8 +211,16 @@ position = Vector2(216, 192)
 [node name="TallMushroom" parent="Decorations" instance=ExtResource("8_ukpq2")]
 position = Vector2(176, 192)
 
-[node name="@Sprite2D@20995" parent="Decorations" instance=ExtResource("8_ukpq2")]
+[node name="@Sprite2D@40647" parent="Decorations" instance=ExtResource("8_ukpq2")]
 position = Vector2(64, 192)
 
-[node name="@Sprite2D@20996" parent="Decorations" instance=ExtResource("8_ukpq2")]
+[node name="@Sprite2D@40648" parent="Decorations" instance=ExtResource("8_ukpq2")]
 position = Vector2(48, 192)
+
+[node name="Room Bounds Trigger" parent="." instance=ExtResource("9_3m76n")]
+
+[node name="CollisionShape2D" parent="Room Bounds Trigger" index="0"]
+position = Vector2(128, 120)
+shape = SubResource("RectangleShape2D_e8qd7")
+
+[editable path="Room Bounds Trigger"]
