@@ -270,25 +270,25 @@ position = Vector2(104, 160)
 [node name="TallMushroom" parent="Entities" instance=ExtResource("6_epbhd")]
 position = Vector2(160, 144)
 
-[node name="@Sprite2D@40659" parent="Entities" instance=ExtResource("6_epbhd")]
+[node name="@Sprite2D@26929" parent="Entities" instance=ExtResource("6_epbhd")]
 position = Vector2(176, 128)
 
 [node name="Mushroom" parent="Entities" instance=ExtResource("7_8g01b")]
 position = Vector2(168, 144)
 
-[node name="@Sprite2D@40660" parent="Entities" instance=ExtResource("6_epbhd")]
+[node name="@Sprite2D@26930" parent="Entities" instance=ExtResource("6_epbhd")]
 position = Vector2(80, 96)
 
-[node name="@Sprite2D@40661" parent="Entities" instance=ExtResource("6_epbhd")]
+[node name="@Sprite2D@26931" parent="Entities" instance=ExtResource("6_epbhd")]
 position = Vector2(48, 88)
 
-[node name="@Sprite2D@40662" parent="Entities" instance=ExtResource("7_8g01b")]
+[node name="@Sprite2D@26932" parent="Entities" instance=ExtResource("7_8g01b")]
 position = Vector2(64, 96)
 
-[node name="@Sprite2D@40663" parent="Entities" instance=ExtResource("7_8g01b")]
+[node name="@Sprite2D@26933" parent="Entities" instance=ExtResource("7_8g01b")]
 position = Vector2(16, 80)
 
-[node name="@Sprite2D@40664" parent="Entities" instance=ExtResource("6_epbhd")]
+[node name="@Sprite2D@26934" parent="Entities" instance=ExtResource("6_epbhd")]
 position = Vector2(8, 80)
 
 [node name="TallGrass" parent="Entities" instance=ExtResource("8_jm0f8")]
@@ -383,10 +383,10 @@ entities = [{
 [node name="Grass" parent="Decorations" instance=ExtResource("5_xa4i2")]
 position = Vector2(64, 208)
 
-[node name="@Sprite2D@40665" parent="Decorations" instance=ExtResource("5_xa4i2")]
+[node name="@Sprite2D@26935" parent="Decorations" instance=ExtResource("5_xa4i2")]
 position = Vector2(56, 208)
 
-[node name="@Sprite2D@40666" parent="Decorations" instance=ExtResource("5_xa4i2")]
+[node name="@Sprite2D@26936" parent="Decorations" instance=ExtResource("5_xa4i2")]
 position = Vector2(104, 232)
 
 [node name="TallMushroom" parent="Decorations" instance=ExtResource("6_epbhd")]

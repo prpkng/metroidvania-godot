@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cp2grj7n2eu35" path="res://Entities/World/Player/player.tscn" id="2_buury"]
 
 [node name="Underground" type="Node2D"]
+physics_interpolation_mode = 2
 
 [node name="InGameCamera" parent="." instance=ExtResource("1_7k3bv")]
 limit_enabled = true

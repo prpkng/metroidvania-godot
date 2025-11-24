@@ -1,8 +1,8 @@
 class_name WindowManager
 extends Node
 
-const MAIN_WIDTH := 256.0
-const MAIN_HEIGHT := 240.0
+const MAIN_WIDTH := 320.0
+const MAIN_HEIGHT := 180.0
 
 const DEFAULT_MULTIPLE := 5
 

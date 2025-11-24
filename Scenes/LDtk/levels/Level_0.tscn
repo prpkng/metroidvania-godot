@@ -211,10 +211,10 @@ position = Vector2(216, 192)
 [node name="TallMushroom" parent="Decorations" instance=ExtResource("8_ukpq2")]
 position = Vector2(176, 192)
 
-[node name="@Sprite2D@40647" parent="Decorations" instance=ExtResource("8_ukpq2")]
+[node name="@Sprite2D@26917" parent="Decorations" instance=ExtResource("8_ukpq2")]
 position = Vector2(64, 192)
 
-[node name="@Sprite2D@40648" parent="Decorations" instance=ExtResource("8_ukpq2")]
+[node name="@Sprite2D@26918" parent="Decorations" instance=ExtResource("8_ukpq2")]
 position = Vector2(48, 192)
 
 [node name="Room Bounds Trigger" parent="." instance=ExtResource("9_3m76n")]
