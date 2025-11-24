@@ -61,26 +61,29 @@ func get_move_input() -> int:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-		# Assign player states to self
+	# Assign player states to self
 	for state: State in fsm.get_all_states(true):
 		if state is PlayerState or state is PlayerMachine:
 			state.player = self
+	
+	fsm.init()
+	
 	
 	# Setup weapon
 	weapon.hit_solid.connect(_on_weapon_hit_solid)
 
 func _on_weapon_hit_solid(_body: PhysicsBody2D) -> void:
-	fsm.root.trigger(&"hit-solid")
+	fsm.trigger(&"hit-solid")
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"jump"):
-		fsm.root.trigger(&"jump")
+		fsm.trigger(&"jump")
 	elif event.is_action_released(&"jump"):
-		fsm.root.trigger(&"stop-jump")
+		fsm.trigger(&"stop-jump")
 	
 	if event.is_action_pressed(&"attack") and attack_cooldown_timer.is_stopped():
-		fsm.root.trigger(&"attack-pressed")
+		fsm.trigger(&"attack-pressed")
 
 
 func _physics_process(_delta: float) -> void:

@@ -10,12 +10,12 @@ extends State
 
 var _current_state: State = null
 
-@onready var is_root := get_parent() is not State
+func init() -> void:
+	process_mode = Node.PROCESS_MODE_INHERIT
+	enter()
 
 func _ready() -> void:
 	super._ready()
-	if is_root:
-		process_mode = Node.PROCESS_MODE_INHERIT
 	
 	for child in get_children():
 		child.machine = self
@@ -24,41 +24,41 @@ func enter(_args := []) -> void:
 	if _current_state == null or reset_on_enter:
 		_current_state = get_state(start_state)
 	
-	_current_state._enter(_args)
+	_current_state.enter(_args)
 
 func process(delta: float) -> void:
-	_current_state._process(delta)
+	_current_state.process(delta)
 
 func physics_process(delta: float) -> void:
-	_current_state._physics_process(delta)
+	_current_state.physics_process(delta)
 
 func exit() -> void:
-	_current_state._exit()
+	_current_state.exit()
 
-func _get_children_names() -> Array[StringName]:
+func _get_children_names() -> Array:
 	return get_children().map(func(c: Node) -> StringName: return c.name)
 
 func get_state(state_name: String) -> State:
-	if not state_name in get_children():
+	if state_name not in _get_children_names():
 		Log.err("State named '%s' not found in state machine!" % state_name)
 		return
 	
 	return get_node(state_name)
 
 ## Triggers an action in the state machine. [br][br]
-## A collection of optional [param args] can also be passed to the target state's [method State._on_action] [br]
+## A collection of optional [param args] can also be passed to the target state's [method State.on_action] [br]
 func trigger(action: StringName, args := []) -> void:
-	_current_state._on_action(action, args)
+	_current_state.on_action(action, args)
 
 ## Switches the machine to the given state [br][br]
-## A collection of optional [param args] can be passed to the target state's [method State._enter] [br]
+## A collection of optional [param args] can be passed to the target state's [method State.enter] [br]
 func switch(target_state: StringName, args := []) -> void:
 	if _current_state != null:
-		_current_state._exit()
+		_current_state.exit()
 	
 	_current_state = get_state(target_state)
 	
-	_current_state._enter(args)
+	_current_state.enter(args)
 	
 
 # Adds a new state to the machine [br][br]
@@ -80,7 +80,7 @@ func switch(target_state: StringName, args := []) -> void:
 		#Log.err("Trying to set a start state named '%s' not present in state machine!" % new_name)
 		#return
 	#_start_state_name = new_name
-	
+
 	
 ## Returns all states the machine
 ## If [param recursive] is true, nested machines will also be taken into account
@@ -99,6 +99,13 @@ func get_all_states(recursive := false) -> Array[State]:
 ## Returns the deepest state in the machine's hierarchy
 func get_leaf_state() -> State:
 	return _current_state.get_leaf_state() if _current_state is StateMachine else _current_state
+
+func _process(delta: float) -> void:
+	process(delta)
+
+func _physics_process(delta: float) -> void:
+	physics_process(delta)
+
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()

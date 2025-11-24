@@ -1,5 +1,5 @@
 class_name RoomsManager
-extends Node
+extends RefCounted
 
 signal on_room_changed(room: LDTKLevel)
 var _last_room: LDTKLevel

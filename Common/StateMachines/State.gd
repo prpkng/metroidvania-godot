@@ -49,6 +49,7 @@ func exit() -> void
 func get_full_hierarchy() -> String:
 	if machine.machine == null:
 		return name
+		
 	
 	var current_name := name
 	var state := machine
@@ -62,6 +63,9 @@ func get_full_hierarchy() -> String:
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
 	
+	if get_parent() is not StateMachine:
+		warnings.push_back("A state will only process if owned by a State Machine!")
+		
 	if get_children(true).size():
 		warnings.push_back("States cannot have children! Use a StateMachine instead")
 	

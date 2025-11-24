@@ -1,5 +1,5 @@
 class_name WindowManager
-extends Node
+extends RefCounted
 
 const MAIN_WIDTH := 320.0
 const MAIN_HEIGHT := 180.0
@@ -19,7 +19,7 @@ func center_window() -> void:
 	var pos := get_display_size() / 2.0 - size / 2.0
 	DisplayServer.window_set_position(pos)
 
-func _enter_tree() -> void:
+func _init() -> void:
 	var display_size := get_display_size()
 	var multiple := DEFAULT_MULTIPLE
 	

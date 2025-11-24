@@ -46,32 +46,40 @@ position = Vector2(0.5, 1)
 visible = false
 
 [node name="FSM" type="Node" parent="."]
+process_mode = 4
+process_priority = 10
 script = ExtResource("4_5c2io")
-start_state = "ground"
+start_state = "air"
 metadata/_custom_type_script = "uid://bgiwrf682kdjw"
 
 [node name="ground" type="Node" parent="FSM"]
+process_priority = 10
 script = ExtResource("5_2bkm7")
 start_state = "idle"
 metadata/_custom_type_script = "uid://c4vr3bhj6vodr"
 
 [node name="idle" type="Node" parent="FSM/ground"]
+process_priority = 10
 script = ExtResource("6_grecd")
 metadata/_custom_type_script = "uid://diclxketdt5s4"
 
 [node name="move" type="Node" parent="FSM/ground"]
+process_priority = 10
 script = ExtResource("7_ps357")
 metadata/_custom_type_script = "uid://bfmgtx73s7gx6"
 
 [node name="air" type="Node" parent="FSM"]
+process_priority = 10
 script = ExtResource("8_61p46")
 metadata/_custom_type_script = "uid://bqy7f3qy0hbpv"
 
 [node name="wall" type="Node" parent="FSM"]
+process_priority = 10
 script = ExtResource("9_7ydse")
 metadata/_custom_type_script = "uid://ncr13c8li1hk"
 
 [node name="attack" type="Node" parent="FSM"]
+process_priority = 10
 script = ExtResource("10_xjvhu")
 metadata/_custom_type_script = "uid://cy4unvgc45vfm"
 
@@ -90,7 +98,6 @@ script = ExtResource("8_xshrf")
 metadata/_custom_type_script = "uid://3a831gsln1gl"
 
 [node name="Label" type="Label" parent="."]
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

@@ -1,7 +1,7 @@
 class_name PlayerAttackState
 extends PlayerState
 
-const HIT_PARTICLES = preload("uid://b64pxoe0snrhd")
+const HIT_PARTICLES = preload("uid://isbjw8snrqpn")
 
 func enter(_args := []) -> void:
 	player.attack_cooldown_timer.start()
@@ -16,7 +16,7 @@ func enter(_args := []) -> void:
 	player.weapon.visible = false
 	
 	await player.animations.play_anim_async(&"sword_slash", true, true, true)
-	if machine._current_state_name != name or !machine or !player: return
+	if machine._current_state != self or !machine or !player: return
 	
 	if player.is_on_floor():
 		machine.switch("ground")
