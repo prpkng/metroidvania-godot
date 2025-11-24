@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cufiayrmn4kgj"]
+
+[ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uotmf"]
+
+[node name="Enemy" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+debug_color = Color(0.7658915, 0.19654575, 0.1963737, 0.41960785)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("1_uotmf")
+metadata/_custom_type_script = "uid://dr8bvnfebp76"
