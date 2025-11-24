@@ -46,13 +46,12 @@ position = Vector2(0.5, 1)
 visible = false
 
 [node name="FSM" type="Node" parent="."]
+process_mode = 4
 script = ExtResource("4_5c2io")
-start_state = "ground"
 metadata/_custom_type_script = "uid://bgiwrf682kdjw"
 
 [node name="ground" type="Node" parent="FSM"]
 script = ExtResource("5_2bkm7")
-start_state = "idle"
 metadata/_custom_type_script = "uid://c4vr3bhj6vodr"
 
 [node name="idle" type="Node" parent="FSM/ground"]

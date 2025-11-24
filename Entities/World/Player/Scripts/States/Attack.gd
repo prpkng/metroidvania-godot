@@ -3,7 +3,7 @@ extends PlayerState
 
 const HIT_PARTICLES = preload("uid://b64pxoe0snrhd")
 
-func _enter(_args := []) -> void:
+func enter(_args := []) -> void:
 	player.attack_cooldown_timer.start()
 	
 	var boost := player.ATTACK_YBOOST
@@ -24,10 +24,10 @@ func _enter(_args := []) -> void:
 		machine.switch("air")
 
 
-func _process(_delta: float) -> void:
+func process(_delta: float) -> void:
 	pass
 	
-func _physics_process(delta: float) -> void:
+func physics_process(delta: float) -> void:
 	var move_input := player.get_move_input()
 	
 	player.velocity.x = move_toward(
@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	player.velocity.y += player.GRAVITY * delta
 	player.velocity.y = min(player.velocity.y, player.MAX_FALL_SPEED)
 
-func _on_action(action: StringName, ..._args: Array) -> void:
+func on_action(action: StringName, ..._args: Array) -> void:
 	match action:
 		&"hit-solid":
 			var space := player.get_world_2d().direct_space_state
@@ -65,7 +65,7 @@ func _on_action(action: StringName, ..._args: Array) -> void:
 			particles.finished.connect(particles.queue_free)
 			#particles.emitting = true
 	
-func _exit() -> void:
+func exit() -> void:
 	player.weapon.visible = true
 	player.weapon.deactivate()
 	

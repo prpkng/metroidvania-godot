@@ -1,32 +1,35 @@
+@tool
 @icon("res://Common/StateMachines/icons/state_icon.svg")
 @abstract
 class_name State
-extends Resource
+extends Node
 ## The base implementation of a FSM State [br][br]
 
 
 ## The parent state machine
 var machine: StateMachine
-## The name of this state in the owning machine
-var name: StringName
+
+func _ready() -> void:
+	# Manually call process from owner
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 ## Called when the owning machine switches to this state
 @abstract 
-func _enter(args := []) -> void 
+func enter(_args := []) -> void 
 
 pass # This ensures godot don't panic and copies the documentation below with autocompletion
 
 ## Called every frame by the owning machine
 ## [param delta] The delta time
 @abstract
-func _process(delta: float) -> void
+func process(delta: float) -> void
 
 pass
 
 ## Called every physics frame by the owning machine
 ## [param delta] The physics delta time
 @abstract
-func _physics_process(delta: float) -> void
+func physics_process(delta: float) -> void
 
 pass
 
@@ -34,13 +37,13 @@ pass
 ## [param action] The name of the action triggered
 ## [param args]
 @warning_ignore('unused_parameter')
-func _on_action(action: StringName, ...args: Array) -> void:
+func on_action(action: StringName, ...args: Array) -> void:
 	pass
 	
 
 ## Called by the owning machine just before switching from this state
 @abstract
-func _exit() -> void
+func exit() -> void
 
 
 func get_full_hierarchy() -> String:
@@ -54,4 +57,12 @@ func get_full_hierarchy() -> String:
 		state = state.machine
 	
 	return current_name
-		
+	
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings := PackedStringArray()
+	
+	if get_children(true).size():
+		warnings.push_back("States cannot have children! Use a StateMachine instead")
+	
+	return warnings

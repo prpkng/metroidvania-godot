@@ -6,7 +6,7 @@ var last_wall_dir := 0
 
 var is_jumping := false
 
-func _enter(args := []) -> void:
+func enter(args := []) -> void:
 	player.jump_buffer.stop()
 	is_jumping = false
 	was_on_wall = false
@@ -42,10 +42,10 @@ func perform_jump() -> void:
 	player.velocity.y = player.JUMP_VELOCITY
 	player.animations.play_anim(&"jump", true, true, true)
 	
-func _process(_delta: float) -> void:
+func process(_delta: float) -> void:
 	pass
 	
-func _physics_process(delta: float) -> void:
+func physics_process(delta: float) -> void:
 	var move_input := player.get_move_input()
 	var gravity := player.GRAVITY if is_jumping else player.FALL_GRAVITY 
 	
@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 		machine.switch(&"wall")
 	
 
-func _on_action(action: StringName, ..._args: Array) -> void:
+func on_action(action: StringName, ..._args: Array) -> void:
 	match action:
 		&"stop-jump" when is_jumping:
 			player.velocity.y *= player.JUMP_CUT_FACTOR
@@ -92,6 +92,6 @@ func _on_action(action: StringName, ..._args: Array) -> void:
 		&"attack-pressed":
 			machine.switch("attack")
 
-func _exit() -> void:
+func exit() -> void:
 	pass
 	

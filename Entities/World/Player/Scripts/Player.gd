@@ -29,7 +29,7 @@ const WALL_JUMP_PUSHBACK_DURATION = 0.2
 const JUMP_BUFFER_TIME := 0.1
 const COYOTE_TIME := 0.08
 
-@onready var fsm: FSM = $FSM
+@onready var fsm: StateMachine = $FSM
 @onready var sprite: Sprite2D = $Sprite
 @onready var weapon: Weapon = $Sprite/Weapon
 @onready var animations: AnimManager = $AnimManager
@@ -61,25 +61,10 @@ func get_move_input() -> int:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Setup FSM states
-	fsm.root = StateMachine.new({
-		&"ground": PlayerGroundStateMachine.new({
-			&"idle": PlayerIdleState.new(),
-			&"move": PlayerMoveState.new()
-		}),
-		&"air": PlayerAirState.new(),
-		&"wall": PlayerWallState.new(),
-		
-		&"attack": PlayerAttackState.new()
-	})
-
-	
-	# Assign player states to self
+		# Assign player states to self
 	for state: State in fsm.get_all_states(true):
 		if state is PlayerState or state is PlayerMachine:
 			state.player = self
-	
-	fsm.start()
 	
 	# Setup weapon
 	weapon.hit_solid.connect(_on_weapon_hit_solid)
@@ -100,6 +85,6 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
-	fsm_label.text = fsm.root.get_leaf_state().get_full_hierarchy()
+	fsm_label.text = fsm.get_leaf_state().get_full_hierarchy()
 	sprite.scale.x = _look_direction
 	

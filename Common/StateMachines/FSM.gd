@@ -14,11 +14,11 @@ func start() -> void:
 func _ready() -> void:
 	if autostart: start()
 
-func _process(delta: float) -> void:
+func process(delta: float) -> void:
 	if _started: root._process(delta)
 	pass
 
-func _physics_process(delta: float) -> void:
+func physics_process(delta: float) -> void:
 	if _started: root._physics_process(delta)
 
 func _exit_tree() -> void:

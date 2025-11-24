@@ -3,7 +3,7 @@ extends PlayerState
 
 var wall_side: int
 
-func _enter(_args := []) -> void:
+func enter(_args := []) -> void:
 	if !player.is_on_wall():
 		# Log because this should not be happening here
 		Log.err("Somehow the player entered on Wall state without being on a wall!")
@@ -13,10 +13,10 @@ func _enter(_args := []) -> void:
 	player.set_look_dir(wall_side)
 	
 	
-func _process(_delta: float) -> void:
+func process(_delta: float) -> void:
 	pass
 	
-func _physics_process(_delta: float) -> void:
+func physics_process(_delta: float) -> void:
 	var move_input := player.get_move_input()
 	player.animations.play_anim(&"idle")
 	
@@ -33,13 +33,13 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	if !player.jump_buffer.is_stopped():
-		_on_action(&"jump")
+		on_action(&"jump")
 
-func _on_action(action: StringName, ...args: Array) -> void:
-	super._on_action(action, args)
+func on_action(action: StringName, ...args: Array) -> void:
+	super.on_action(action, args)
 	if action == &"jump":
 		machine.switch("air", ["wall_jump", wall_side])
 
-func _exit() -> void:
+func exit() -> void:
 	pass
 	

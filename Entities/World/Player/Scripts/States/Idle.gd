@@ -1,13 +1,13 @@
 class_name PlayerIdleState
 extends PlayerState
 
-func _enter(_args := []) -> void:
+func enter(_args := []) -> void:
 	pass
 	
-func _process(_delta: float) -> void:
+func process(_delta: float) -> void:
 	pass
 	
-func _physics_process(delta: float) -> void:
+func physics_process(delta: float) -> void:
 	player.animations.play_anim(&"idle")
 	if player.get_move_input() != 0:
 		machine.switch(&"move")
@@ -18,6 +18,6 @@ func _physics_process(delta: float) -> void:
 		player.GROUND_FRICTION * delta
 	)
 	
-func _exit() -> void:
+func exit() -> void:
 	pass
 	

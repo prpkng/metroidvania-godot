@@ -1,8 +1,8 @@
 class_name PlayerGroundStateMachine
 extends PlayerMachine
 
-func _enter(args := []) -> void:
-	super._enter(args)
+func enter(args := []) -> void:
+	super.enter(args)
 	
 	if "from_air" in args:
 		player.animations.play_anim_locking(&"land")
@@ -10,8 +10,8 @@ func _enter(args := []) -> void:
 	if !player.jump_buffer.is_stopped():
 		machine.switch("air", ["jump"])
 
-func _physics_process(delta: float) -> void:
-	super._physics_process(delta)
+func physics_process(delta: float) -> void:
+	super.physics_process(delta)
 	
 	if !player.coyote_timer.is_stopped():
 		player.coyote_timer.stop()
@@ -20,8 +20,8 @@ func _physics_process(delta: float) -> void:
 	if !player.is_on_floor():
 		machine.switch("air")
 
-func _on_action(action: StringName, ...args: Array) -> void:
-	super._on_action(action, args)
+func on_action(action: StringName, ...args: Array) -> void:
+	super.on_action(action, args)
 	match action:
 		&"jump":
 			machine.switch("air", ["jump"])
