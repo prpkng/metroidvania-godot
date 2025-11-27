@@ -4,29 +4,23 @@ extends Camera2D
 const QUADRANT_SIZE := Vector2(256, 240)
 const GOING_UP_SMOOTHING := 12
 
-# == STATIC ==
+var _available_targets: Array[Node2D]
 
-static var _available_targets: Array[CameraTarget]
-
-static func add_target(target: CameraTarget) -> void:
+func add_target(target: Node2D) -> void:
 	Log.info("Adding new target to camera: ", target)
 	_available_targets.push_back(target)
 
-static func remove_target(target: CameraTarget) -> void:
+func remove_target(target: Node2D) -> void:
 	_available_targets.erase(target)
 	Log.info("Removing target from camera: ", target)
 
-# ============
-
-var current_target: CameraTarget
+var current_target: Node2D
 
 func _ready() -> void:
-	set_current_target(0)
-	
 	GameManager.rooms.on_room_changed.connect(_on_room_changed)
 
 
-func set_current_target(index: int) -> void:
+func set_current_target(index: int, teleport := true) -> void:
 	if index < 0 or index >= _available_targets.size():
 		Log.error("Index [%s] out of range of available targets!" % index)
 		return
@@ -34,6 +28,15 @@ func set_current_target(index: int) -> void:
 	Log.info("Set camera current target to: ", _available_targets[index])
 		
 	current_target = _available_targets[index]
+	
+	if teleport: position_smoothing_enabled = false
+	
+	global_position = current_target.global_position
+	
+	if teleport:
+		await get_tree().process_frame
+		position_smoothing_enabled = true
+	
 
 func _on_room_changed(room: LDTKLevel) -> void:
 	var limit_pos := room.world_position

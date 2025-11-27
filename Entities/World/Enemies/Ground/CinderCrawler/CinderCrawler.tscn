@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://n0cvpn4gp7nl"]
+[gd_scene load_steps=5 format=3 uid="uid://n0cvpn4gp7nl"]
 
 [ext_resource type="PackedScene" uid="uid://cufiayrmn4kgj" path="res://Entities/World/Enemies/Common/BaseEnemy.tscn" id="1_q66pb"]
 [ext_resource type="Texture2D" uid="uid://b3wfhu2am04ew" path="res://Entities/World/Enemies/Ground/CinderCrawler/cinder_crawler.png" id="2_4jmn5"]
+[ext_resource type="Script" uid="uid://bgiwrf682kdjw" path="res://Common/StateMachines/StateMachine.gd" id="3_kvdgx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q66pb"]
 size = Vector2(10, 7)
@@ -16,3 +17,8 @@ hframes = 4
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_q66pb")
+
+[node name="Behaviour FSM" type="Node" parent="." index="3"]
+process_mode = 4
+script = ExtResource("3_kvdgx")
+metadata/_custom_type_script = "uid://bgiwrf682kdjw"

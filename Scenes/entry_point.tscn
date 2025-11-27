@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://csikept4fvmm5"]
+
+[ext_resource type="Script" uid="uid://tqibgl5ox54x" path="res://Scenes/entry_point.gd" id="1_oidjt"]
+
+[node name="EntryPoint" type="Node2D"]
+physics_interpolation_mode = 2
+script = ExtResource("1_oidjt")

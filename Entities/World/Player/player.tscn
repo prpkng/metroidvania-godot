@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cp2grj7n2eu35"]
+[gd_scene load_steps=18 format=3 uid="uid://cp2grj7n2eu35"]
 
 [ext_resource type="Script" uid="uid://bb1ip0d3l8i54" path="res://Entities/World/Player/Scripts/Player.gd" id="1_3uyv8"]
 [ext_resource type="Texture2D" uid="uid://dday0yj05an5m" path="res://Entities/World/Player/Art/player.png" id="1_mv1ah"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://diclxketdt5s4" path="res://Entities/World/Player/Scripts/States/Idle.gd" id="6_grecd"]
 [ext_resource type="Script" uid="uid://bfmgtx73s7gx6" path="res://Entities/World/Player/Scripts/States/Move.gd" id="7_ps357"]
 [ext_resource type="Script" uid="uid://bqy7f3qy0hbpv" path="res://Entities/World/Player/Scripts/States/Air.gd" id="8_61p46"]
-[ext_resource type="Script" uid="uid://3a831gsln1gl" path="res://Entities/World/Camera/Scripts/CameraTarget.gd" id="8_xshrf"]
 [ext_resource type="Script" uid="uid://ncr13c8li1hk" path="res://Entities/World/Player/Scripts/States/Wall.gd" id="9_7ydse"]
 [ext_resource type="Script" uid="uid://cy4unvgc45vfm" path="res://Entities/World/Player/Scripts/States/Attack.gd" id="10_xjvhu"]
 [ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="11_vk8fo"]
@@ -91,11 +90,6 @@ autoplay = "idle"
 next/jump = &"fall"
 blend_times = [&"fall", &"land", 0.1, &"jump", &"fall", 0.15, &"sword_slash", &"idle", 0.12]
 script = ExtResource("3_01a4e")
-
-[node name="CameraTarget" type="Node2D" parent="."]
-position = Vector2(0, -4)
-script = ExtResource("8_xshrf")
-metadata/_custom_type_script = "uid://3a831gsln1gl"
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 7

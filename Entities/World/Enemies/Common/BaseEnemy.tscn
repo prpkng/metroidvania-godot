@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cufiayrmn4kgj"]
+[gd_scene load_steps=3 format=3 uid="uid://cufiayrmn4kgj"]
 
+[ext_resource type="Script" uid="uid://wotkkiiamtgb" path="res://Entities/World/Enemies/Common/BaseEnemy.gd" id="1_3xe7h"]
 [ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uotmf"]
 
 [node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_3xe7h")
+metadata/_custom_type_script = "uid://wotkkiiamtgb"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

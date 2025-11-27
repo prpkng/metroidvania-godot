@@ -1,7 +1,7 @@
 class_name PlayerAttackState
 extends PlayerState
 
-const HIT_PARTICLES = preload("uid://isbjw8snrqpn")
+@onready var hit_particles := load("uid://isbjw8snrqpn")
 
 func enter(_args := []) -> void:
 	player.attack_cooldown_timer.start()
@@ -21,7 +21,7 @@ func enter(_args := []) -> void:
 	if player.is_on_floor():
 		machine.switch("ground")
 	else:
-		machine.switch("air")
+		machine.switch("air", ["already_jumping"])
 
 
 func process(_delta: float) -> void:
@@ -57,8 +57,8 @@ func on_action(action: StringName, ..._args: Array) -> void:
 			player.velocity.y = player.ATTACK_WALL_BUMP.y
 			machine.switch("air")
 			
-			var particles: GPUParticles2D = HIT_PARTICLES.instantiate()
-			player.owner.add_child(particles)
+			var particles: GPUParticles2D = hit_particles.instantiate()
+			player.add_sibling(particles)
 			particles.global_position = result["position"] - normal*4
 			particles.transform.x = normal
 			particles.emitting = true
