@@ -15,6 +15,7 @@ class_name LineOfSight extends Area2D
 
 var circle_shape: CircleShape2D
 var collision_shape: CollisionShape2D
+var visible_notifier: VisibleOnScreenNotifier2D
 
 var overlapping_entities: Array[Node2D] = []
 
@@ -33,9 +34,6 @@ func _draw() -> void:
 				else Color.LAWN_GREEN)
 	draw_circle(position, detection_range, color, false, 0.9)
 
-func _update_debug_draw() -> void:
-	if get_tree().debug_navigation_hint:
-		queue_redraw()
 
 #endregion
 
@@ -63,6 +61,7 @@ func _ready() -> void:
 	
 	add_child(collision_shape, false, INTERNAL_MODE_BACK)
 	collision_shape.owner = get_tree().edited_scene_root
+	
 
 
 func _on_entered(body: Node2D) -> void:
@@ -97,8 +96,6 @@ func is_in_sight(node: Node2D) -> bool:
 
 
 func _process(_delta: float) -> void:
-	_update_debug_draw()
-	
 	if !entity_entered_sight.has_connections() and !entity_exited_sight.has_connections(): 
 		return
 	
