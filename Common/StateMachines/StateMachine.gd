@@ -3,6 +3,10 @@
 class_name StateMachine
 extends State
 
+signal state_entered(state_name: StringName)
+signal state_exited(state_name: StringName)
+signal action_triggered(action: StringName, args: Array)
+
 ## If true, resets the [member _current_state_name] to the [member _start_state_name] at [method enter]
 @export var reset_on_enter: bool = true
 
@@ -25,6 +29,8 @@ func enter(_args := []) -> void:
 		_current_state = get_state(start_state)
 	
 	_current_state.enter(_args)
+	_current_state.entered.emit()
+	state_entered.emit(_current_state.name)
 
 func process(delta: float) -> void:
 	_current_state.process(delta)
@@ -34,6 +40,8 @@ func physics_process(delta: float) -> void:
 
 func exit() -> void:
 	_current_state.exit()
+	_current_state.exited.emit()
+	state_exited.emit(_current_state.name)
 
 func _get_children_names() -> Array:
 	return get_children().map(func(c: Node) -> StringName: return c.name)
@@ -49,38 +57,25 @@ func get_state(state_name: String) -> State:
 ## A collection of optional [param args] can also be passed to the target state's [method State.on_action] [br]
 func trigger(action: StringName, args := []) -> void:
 	_current_state.on_action(action, args)
+	action_triggered.emit(action, args)
 
 ## Switches the machine to the given state [br][br]
 ## A collection of optional [param args] can be passed to the target state's [method State.enter] [br]
 func switch(target_state: StringName, args := []) -> void:
+	var new_state := get_state(target_state)
+	if new_state == null: return
+	
 	if _current_state != null:
 		_current_state.exit()
+		_current_state.exited.emit()
+		state_exited.emit(_current_state.name)
 	
-	_current_state = get_state(target_state)
+	_current_state = new_state
 	
 	_current_state.enter(args)
+	_current_state.entered.emit()
+	state_entered.emit(target_state)
 	
-
-# Adds a new state to the machine [br][br]
-# [b]Note:[/b] The first state added to the machine will be assigned as the [member _start_state_name]  [br]
-#func add_state(new_name: StringName, new_state: State) -> void:
-	#if new_name in states:
-		#Log.err("State named '%s' already exists in state machine!" % new_name)
-		#return
-	#
-	#states[new_name] = new_state
-	#
-	#if _start_state_name == null:
-		#_start_state_name = new_name
-	#
-
-# Sets the start state for this state machine
-#func set_start_state(new_name: StringName) -> void:
-	#if not new_name in states:
-		#Log.err("Trying to set a start state named '%s' not present in state machine!" % new_name)
-		#return
-	#_start_state_name = new_name
-
 	
 ## Returns all states the machine
 ## If [param recursive] is true, nested machines will also be taken into account

@@ -1,0 +1,3 @@
+class_name Constants
+
+static var GROUND_LAYER := 0b00000000_00000000_00000000_00000010

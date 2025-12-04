@@ -1,24 +1,128 @@
-[gd_scene load_steps=5 format=3 uid="uid://n0cvpn4gp7nl"]
+[gd_scene load_steps=14 format=3 uid="uid://n0cvpn4gp7nl"]
 
 [ext_resource type="PackedScene" uid="uid://cufiayrmn4kgj" path="res://Entities/World/Enemies/Common/BaseEnemy.tscn" id="1_q66pb"]
 [ext_resource type="Texture2D" uid="uid://b3wfhu2am04ew" path="res://Entities/World/Enemies/Ground/CinderCrawler/cinder_crawler.png" id="2_4jmn5"]
+[ext_resource type="Script" uid="uid://liaf5iwjgo6m" path="res://Entities/World/Enemies/Common/ai_enemy.gd" id="2_nqtl1"]
+[ext_resource type="Script" uid="uid://bhtaibr6bccwl" path="res://Entities/World/Enemies/Ground/ground_enemy_anim_manager.gd" id="3_jwh83"]
 [ext_resource type="Script" uid="uid://bgiwrf682kdjw" path="res://Common/StateMachines/StateMachine.gd" id="3_kvdgx"]
+[ext_resource type="Script" uid="uid://mx5yh7esxmm3" path="res://Entities/World/Enemies/Ground/AI/patrol_state.gd" id="4_8bwtb"]
+[ext_resource type="Script" uid="uid://brl4qm2po76ds" path="res://Common/Components/line_of_sight.gd" id="4_kw1l7"]
+
+[sub_resource type="Animation" id="Animation_y5nfv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jwh83"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nty53"]
+resource_name = "move"
+length = 0.40000334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y5nfv"]
+_data = {
+&"RESET": SubResource("Animation_y5nfv"),
+&"idle": SubResource("Animation_jwh83"),
+&"move": SubResource("Animation_nty53")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q66pb"]
 size = Vector2(10, 7)
 
-[node name="Enemy" instance=ExtResource("1_q66pb")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwh83"]
+radius = 128.0
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Enemy" node_paths=PackedStringArray("fsm") instance=ExtResource("1_q66pb")]
+physics_interpolation_mode = 1
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_nqtl1")
+fsm = NodePath("Behaviour FSM")
+
+[node name="Ground Enemy Anim Manager" type="AnimationPlayer" parent="." index="0" node_paths=PackedStringArray("enemy")]
+libraries = {
+&"": SubResource("AnimationLibrary_y5nfv")
+}
+script = ExtResource("3_jwh83")
+enemy = NodePath("..")
+metadata/_custom_type_script = "uid://bhtaibr6bccwl"
+
+[node name="Sprite2D" parent="." index="1"]
+z_index = 10
 texture = ExtResource("2_4jmn5")
 offset = Vector2(-1, -2)
 hframes = 4
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_q66pb")
 
-[node name="Behaviour FSM" type="Node" parent="." index="3"]
+[node name="LineOfSight" type="Area2D" parent="." index="4"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("4_kw1l7")
+detection_range = 128.0
+metadata/_custom_type_script = "uid://brl4qm2po76ds"
+
+[node name="CollisionShape" type="CollisionShape2D" parent="LineOfSight" index="0"]
+visible = false
+shape = SubResource("CircleShape2D_jwh83")
+debug_color = Color(1, 1, 1, 0)
+
+[node name="Behaviour FSM" type="Node" parent="." index="5"]
 process_mode = 4
+process_priority = 10
 script = ExtResource("3_kvdgx")
+start_state = "patrol"
 metadata/_custom_type_script = "uid://bgiwrf682kdjw"
+
+[node name="patrol" type="Node" parent="Behaviour FSM" index="0" node_paths=PackedStringArray("line_of_sight")]
+process_mode = 4
+process_priority = 10
+script = ExtResource("4_8bwtb")
+line_of_sight = NodePath("../../LineOfSight")
+destination_state = &"test"
+movement_speed = 40.0
+wait_time_min = 0.4
+wait_time_max = 1.2
+patrol_time_min = 0.4
+patrol_time_max = 1.5
+check_corners = true
+metadata/_custom_type_script = "uid://mx5yh7esxmm3"

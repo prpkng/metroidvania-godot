@@ -111,7 +111,7 @@ vertical_alignment = 2
 
 [node name="HurtBox2D" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 collision_layer = 256
-collision_mask = 512
+collision_mask = 768
 script = ExtResource("12_6w7wg")
 health = NodePath("../Health")
 metadata/_custom_type_script = "uid://ctuf38y050aep"

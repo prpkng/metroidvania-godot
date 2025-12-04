@@ -5,3 +5,6 @@ extends CharacterBody2D
 
 @onready var health: Health = $Health
 @onready var sprite: Sprite2D = $Sprite2D
+
+func _physics_process(_delta: float) -> void:
+	move_and_slide()

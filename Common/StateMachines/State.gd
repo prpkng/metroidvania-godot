@@ -5,6 +5,8 @@ class_name State
 extends Node
 ## The base implementation of a FSM State [br][br]
 
+@warning_ignore("unused_signal") signal entered
+@warning_ignore("unused_signal") signal exited
 
 ## The parent state machine
 var machine: StateMachine

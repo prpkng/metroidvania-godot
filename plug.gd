@@ -7,4 +7,7 @@ func _plugging() -> void:
 	plug("heygleeson/godot-ldtk-importer")
 	
 	plug("cluttered-code/godot-health-hitbox-hurtbox", { "exclude": ["addons/gdUnit4"] })
+	
+	plug('Maran23/script-ide', { "dev": true})
+	
 	pass

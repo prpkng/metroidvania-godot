@@ -7,12 +7,12 @@ const GOING_UP_SMOOTHING := 12
 var _available_targets: Array[Node2D]
 
 func add_target(target: Node2D) -> void:
-	Log.info("Adding new target to camera: ", target)
+	Log.debug("Adding new target to camera: ", target)
 	_available_targets.push_back(target)
 
 func remove_target(target: Node2D) -> void:
 	_available_targets.erase(target)
-	Log.info("Removing target from camera: ", target)
+	Log.debug("Removing target from camera: ", target)
 
 var current_target: Node2D
 
@@ -25,7 +25,7 @@ func set_current_target(index: int, teleport := true) -> void:
 		Log.error("Index [%s] out of range of available targets!" % index)
 		return
 	
-	Log.info("Set camera current target to: ", _available_targets[index])
+	Log.debug("Set camera current target to: ", _available_targets[index])
 		
 	current_target = _available_targets[index]
 	

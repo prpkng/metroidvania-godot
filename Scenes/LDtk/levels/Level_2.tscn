@@ -378,10 +378,10 @@ entities = [{
 [node name="Grass" parent="Decorations" instance=ExtResource("5_epbhd")]
 position = Vector2(64, 208)
 
-[node name="@Sprite2D@57285" parent="Decorations" instance=ExtResource("5_epbhd")]
+[node name="@Sprite2D@47189" parent="Decorations" instance=ExtResource("5_epbhd")]
 position = Vector2(56, 208)
 
-[node name="@Sprite2D@57286" parent="Decorations" instance=ExtResource("5_epbhd")]
+[node name="@Sprite2D@47190" parent="Decorations" instance=ExtResource("5_epbhd")]
 position = Vector2(104, 232)
 
 [node name="TallMushroom" parent="Decorations" instance=ExtResource("6_8g01b")]

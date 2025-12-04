@@ -60,6 +60,8 @@ func on_action(action: StringName, ..._args: Array) -> void:
 			var particles: GPUParticles2D = hit_particles.instantiate()
 			player.add_sibling(particles)
 			particles.global_position = result["position"] - normal*4
+			if normal.length() != 1:
+				Log.error("Normal should be NORMALIZED!")
 			particles.transform.x = normal
 			particles.emitting = true
 			particles.finished.connect(particles.queue_free)

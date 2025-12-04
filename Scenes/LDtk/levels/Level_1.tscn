@@ -365,37 +365,37 @@ position = Vector2(24, 192)
 [node name="TallMushroom" parent="Decorations" instance=ExtResource("7_w4fb6")]
 position = Vector2(0, 192)
 
-[node name="@Sprite2D@57275" parent="Decorations" instance=ExtResource("7_w4fb6")]
+[node name="@Sprite2D@47179" parent="Decorations" instance=ExtResource("7_w4fb6")]
 position = Vector2(32, 192)
 
-[node name="@Sprite2D@57276" parent="Decorations" instance=ExtResource("7_w4fb6")]
+[node name="@Sprite2D@47180" parent="Decorations" instance=ExtResource("7_w4fb6")]
 position = Vector2(64, 192)
 
-[node name="@Sprite2D@57277" parent="Decorations" instance=ExtResource("6_lfhgo")]
+[node name="@Sprite2D@47181" parent="Decorations" instance=ExtResource("6_lfhgo")]
 position = Vector2(72, 200)
 
 [node name="TallGrass" parent="Decorations" instance=ExtResource("8_hcjae")]
 position = Vector2(128, 184)
 
-[node name="@Sprite2D@57278" parent="Decorations" instance=ExtResource("6_lfhgo")]
+[node name="@Sprite2D@47182" parent="Decorations" instance=ExtResource("6_lfhgo")]
 position = Vector2(168, 184)
 
-[node name="@Sprite2D@57279" parent="Decorations" instance=ExtResource("6_lfhgo")]
+[node name="@Sprite2D@47183" parent="Decorations" instance=ExtResource("6_lfhgo")]
 position = Vector2(184, 168)
 
-[node name="@Sprite2D@57280" parent="Decorations" instance=ExtResource("6_lfhgo")]
+[node name="@Sprite2D@47184" parent="Decorations" instance=ExtResource("6_lfhgo")]
 position = Vector2(216, 88)
 
-[node name="@Sprite2D@57281" parent="Decorations" instance=ExtResource("7_w4fb6")]
+[node name="@Sprite2D@47185" parent="Decorations" instance=ExtResource("7_w4fb6")]
 position = Vector2(160, 56)
 
-[node name="@Sprite2D@57282" parent="Decorations" instance=ExtResource("6_lfhgo")]
+[node name="@Sprite2D@47186" parent="Decorations" instance=ExtResource("6_lfhgo")]
 position = Vector2(168, 64)
 
-[node name="@Sprite2D@57283" parent="Decorations" instance=ExtResource("5_584t7")]
+[node name="@Sprite2D@47187" parent="Decorations" instance=ExtResource("5_584t7")]
 position = Vector2(176, 64)
 
-[node name="@Sprite2D@57284" parent="Decorations" instance=ExtResource("5_584t7")]
+[node name="@Sprite2D@47188" parent="Decorations" instance=ExtResource("5_584t7")]
 position = Vector2(128, 40)
 
 [node name="Room Bounds Trigger" parent="." instance=ExtResource("9_lmkue")]
